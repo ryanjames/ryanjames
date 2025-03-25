@@ -1,8 +1,5 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import App from "../components/App";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<App client:only="react" />

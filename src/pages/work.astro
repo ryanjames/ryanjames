@@ -1,7 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import App from "../components/App"; // Adjust path if needed
 ---
 
-<Layout>
-  Work
-</Layout>
+<App client:only="react" />
