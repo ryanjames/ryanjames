@@ -1,10 +1,27 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function About() {
+import {
+  titleVariants,
+  paragraphVariants,
+  buttonVariants,
+} from "../animations";
+
+export default function Work() {
   return (
-    <div>
-      <h1>Work Page</h1>
-      <Link to="/">Index</Link>
-    </div>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      style={{ position: "absolute", width: "100%", top: 0, left: 0 }}
+    >
+      <motion.h1 variants={titleVariants}>Work Page</motion.h1>
+      <motion.p variants={paragraphVariants}>
+        Here is the work section.
+      </motion.p>
+      <Link to="/">
+        <motion.button variants={buttonVariants}>Back to Index</motion.button>
+      </Link>
+    </motion.div>
   );
 }
