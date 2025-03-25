@@ -1,0 +1,19 @@
+import { styled, createGlobalStyle } from "styled-components";
+
+export const SGlobal = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+`;
+
+export const SBody = styled.div`
+  padding-top: 50px;
+`

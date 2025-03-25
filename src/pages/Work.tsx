@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import { SBody } from "../components/Styles";
+
 /*
 import { Link } from "react-router-dom";
 
@@ -46,7 +48,7 @@ export default function Work() {
   }, [navigate]);
 
   return (
-    <div className="flex h-screen">
+    <SBody>
       {/* Sidebar Navigation */}
       <nav className="w-1/4 fixed left-0 top-0 h-full p-4 bg-gray-100">
         {Object.entries(caseStudies).map(([category, studies]) => (
@@ -79,7 +81,7 @@ export default function Work() {
       </nav>
 
       {/* Case Study Content */}
-      <main className="ml-1/4 w-3/4 p-8 space-y-20">
+      <div className="ml-1/4 w-3/4 p-8 space-y-20">
         {Object.values(caseStudies)
           .flat()
           .map((study) => (
@@ -114,7 +116,7 @@ export default function Work() {
               </div>
             </motion.section>
           ))}
-      </main>
-    </div>
+      </div>
+    </SBody>
   );
 }

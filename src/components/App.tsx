@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { SGlobal } from "./Styles";
 
 import Header from "./Header";
 import Index from "../pages/Index";
@@ -33,31 +35,43 @@ function AnimatedRoutes() {
 
   return (
     <>
+      <SGlobal />
       <Header />
-      <AnimatePresence>
-        {isPageReady && (
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(10px)" }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              zIndex: 1,
-            }}
-          >
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Index />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <SMain>
+        <AnimatePresence>
+          {isPageReady && (
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(10px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                zIndex: 1,
+              }}
+            >
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Index />} />
+                <Route path="/work" element={<Work />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </SMain>
     </>
   );
 }
+
+const SMain = styled.main`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: pink;
+`;

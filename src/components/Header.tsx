@@ -20,18 +20,24 @@ export default function Header() {
   );
 }
 
+const SHeader = styled.nav`
+  z-index: 10;
+  position: fixed;
+  display: flex;
+  background: #fc0;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+`;
 const SNavigation = styled.nav`
   gap: 1.5rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
 `;
-const SHeader = styled.nav`
-  z-index: 10;
-  position: absolute;
-  display: flex;
-`;
-
 const StyledNavLink = styled(Link)<{ active: boolean }>`
   text-decoration: none;
   font-size: 1rem;
