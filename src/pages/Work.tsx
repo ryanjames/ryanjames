@@ -98,15 +98,19 @@ export default function Work() {
                 if (el) sectionsRef.current[work.slug] = el;
               }}
             >
-              <h2>
-                {work.title}
-              </h2>
-              <p>
-                {work.description}
-              </p>
+              <SDescription>
+                <h2>
+                  {work.title}
+                </h2>
+                <p>
+                  {work.description}
+                </p>
+              </SDescription>
+              <SImage>
               {work.images.map((image) => (
                 <img key={image.src} src={image.src} alt={`${image.alt}`} />
               ))}
+              </SImage>
             </SWork>
           ))}
       </SWorks>
@@ -115,19 +119,34 @@ export default function Work() {
 }
 
 const SWork = styled.div`
-  height: 70vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  padding-top: 120px;
+`;
+
+const SImage = styled.div`
+  flex: 1;
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+    display: block;
+  }
+`
+
+const SDescription = styled.div`
+  width: 300px;
+  padding-right: 40px;
   h2 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.2em;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 0.1em;
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-`;
+
+`
 
 const SWorkNav = styled(motion.div)`
   width: 220px;
@@ -146,5 +165,6 @@ const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
 
 const SWorks = styled.div`
   margin-left: 220px;
+  padding-right: 32px;
   padding-bottom: 40vh;
 `;

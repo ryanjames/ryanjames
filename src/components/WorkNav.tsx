@@ -86,24 +86,18 @@ export default function WorkNav({ works, scrollToSection }: { works: TWorks, scr
       exit="exit"
     >
       <motion.dl
-        variants={categoryVariants} // Parent controls stagger
+        variants={categoryVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <motion.dt key="work" variants={listItemVariants}>
-          Work
-        </motion.dt>
         {works.map((category) => (
           <>
             <motion.dt key={category.category} variants={listItemVariants}>
               {category.category}
             </motion.dt>
-            {/* This controls staggering */}
             {category.items.map((work) => (
               <motion.dd key={work.slug} variants={listItemVariants}>
-                {" "}
-                {/* No need for initial/animate */}
                 <StyledWorkNavLink
                   to={`/work#${work.slug}`}
                   $active={location.hash === `#${work.slug}`}
@@ -128,11 +122,19 @@ const SWorkNav = styled(motion.div)`
   width: 220px;
   position: fixed;
   left: 32px;
-  top: 80px;
+  top: 100px;
   z-index: 1000;
+  dt {
+    padding-top: 20px;
+    display: block;
+    line-height: 160%;
+  }
 `;
 
 const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
-  font-weight: ${(props) => (props.$active ? "bold" : "normal")};
-  color: ${(props) => (props.$active ? "#0070f3" : "#555")};
+  font-size: 1em;
+  margin-left: 12px;
+  line-height: 160%;
+  font-weight: 300;
+  color: ${(props) => (props.$active ? "#0070f3" : "#555")} !important;
 `;
