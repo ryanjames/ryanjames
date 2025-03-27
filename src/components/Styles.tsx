@@ -24,9 +24,18 @@ export const SGlobal = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body {
+    height: 100%;
+  }
+
   body {
+    overscroll-behavior: none;
     font-family: 'Nacelle', system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #101214;
+    color: #ffffff;
+    a, a:active, a:hover, a:visited {
+      color: #ffffff;
+      text-decoration: none;
+    }
   }
 `;

@@ -15,45 +15,85 @@ export default function Work() {
   const location = useLocation();
   const { study } = useParams();
   const [activeSection, setActiveSection] = useState("");
+  const [isScrollingManually, setIsScrollingManually] = useState(false);
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-            navigate(`/work/${entry.target.id}`, { replace: true });
-          }
-        });
-      },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0.5 }
-    );
+  // Function to scroll to the section and update the URL
+  const scrollToSection = (section: string) => {
+    setIsScrollingManually(true); // Set manual scroll flag
+    if (sectionsRef.current[section]) {
+      sectionsRef.current[section]?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      // Update the URL hash
+      window.location.hash = `#${section}`;
+    }
+  };
 
-    Object.values(sectionsRef.current).forEach((section) => {
-      if (section) observer.observe(section);
+  // Intersection observer logic to update active section and URL when it's at the top
+  const handleScroll = () => {
+    if (isScrollingManually) return; // Ignore scroll events while scrolling manually
+
+    const scrollPosition = window.scrollY;
+    let currentSection = "";
+
+    Object.entries(sectionsRef.current).forEach(([id, section]) => {
+      if (section) {
+        const sectionRect = section.getBoundingClientRect();
+        // Check if the section is at the top of the viewport
+        if (sectionRect.top <= 0 && sectionRect.bottom > 0) {
+          currentSection = id;
+        }
+      }
     });
 
-    return () => observer.disconnect();
-  }, [navigate]);
+    if (currentSection && currentSection !== activeSection) {
+      setActiveSection(currentSection);
+      // Update the URL to include the hash (so the browser address updates as we scroll)
+      navigate(`/work#${currentSection}`, { replace: true });
+    }
+  };
 
+  useEffect(() => {
+    // If the URL is just /work (without any hash) and we're not already on the desired hash
+    if (location.hash === "" && window.location.hash !== "#case-study-1") {
+      navigate("/work#case-study-1", { replace: true });
+    }
+  }, [location, navigate]);
+
+  useEffect(() => {
+    // Initialize the scroll listener
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Clean up scroll listener
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [activeSection, navigate, isScrollingManually]);
+
+  // Reset the flag after the scroll animation is done
+  useEffect(() => {
+    if (isScrollingManually) {
+      setTimeout(() => {
+        setIsScrollingManually(false); // Reset manual scroll flag after 1000ms (time for scroll)
+      }, 1000); // 1 second delay to give time for scroll animation to finish
+    }
+  }, [isScrollingManually]);
+
+  // Smooth scroll to the section when the hash changes (e.g., from manual navigation)
   useEffect(() => {
     const studyFromHash = window.location.hash.substring(1);
     if (studyFromHash && sectionsRef.current[studyFromHash]) {
       sectionsRef.current[studyFromHash].scrollIntoView({ behavior: "smooth" });
       setActiveSection(studyFromHash);
     }
-  }, [location.hash]);
+  }, []);
 
   return (
     <>
       {createPortal(
-        <SWorkNav
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-        >
+        <SWorkNav>
           {Object.entries(caseStudies).map(([category, studies]) => (
             <div key={category}>
               <h2>{category}</h2>
@@ -61,14 +101,11 @@ export default function Work() {
                 {studies.map((study) => (
                   <li key={study}>
                     <StyledWorkNavLink
-                      to={`/work/#${study}`} // Update to hash-based path
-                      active={location.hash === `#${study}`}
+                      to={`/work#${study}`} // Update to hash-based path
+                      $active={location.hash === `#${study}`}
                       onClick={(e) => {
                         e.preventDefault();
-                        sectionsRef.current[study]?.scrollIntoView({
-                          behavior: "smooth",
-                        });
-                        window.location.hash = `#${study}`; // Set URL hash manually
+                        scrollToSection(study); // Use smooth scroll
                       }}
                     >
                       {study.replace(/-/g, " ")}
@@ -126,7 +163,7 @@ const SCaseStudy = styled(motion.section)`
   }
 `;
 
-const SWorkNav = styled(motion.div)`
+const SWorkNav = styled.div`
   width: 220px;
   position: fixed;
   left: 0;
@@ -136,9 +173,9 @@ const SWorkNav = styled(motion.div)`
   background-color: orange;
 `;
 
-const StyledWorkNavLink = styled(Link)<{ active: boolean }>`
-  font-weight: ${(props) => (props.active ? "bold" : "normal")};
-  color: ${(props) => (props.active ? "#0070f3" : "#555")};
+const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
+  font-weight: ${(props) => (props.$active ? "bold" : "normal")};
+  color: ${(props) => (props.$active ? "#0070f3" : "#555")};
 `;
 
 const SCaseStudies = styled.div`
