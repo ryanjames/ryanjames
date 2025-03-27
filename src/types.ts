@@ -3,6 +3,7 @@ export type TWorks = {
   items: {
     title: string;
     slug: string;
+    category?: string;
     description: string;
     images: {
       src: string;
@@ -10,3 +11,26 @@ export type TWorks = {
     }[];
   }[];
 }[];
+
+type TFontTypes = {
+  sans: string;
+  mono: string;
+};
+
+type TColors = {
+  black: string;
+  white: string;
+  active: string;
+  offBlack?: string;
+};
+
+type TMeasurements = {
+  workNavWidth: number;
+  desktopMargin: number;
+};
+
+export type TStyles = {
+  type: TFontTypes;
+  colors: TColors;
+  measurements: TMeasurements;
+};

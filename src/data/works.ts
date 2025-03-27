@@ -2,11 +2,12 @@ import type { TWorks } from "../types"
 
 const works: TWorks = [
   {
-    category: "Product Design",
+    category: "Featured",
     items: [
       {
         title: "Betteromics",
         slug: "betteromics-product-design",
+        category: "Product Design",
         description:
           "Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna.",
         images: [
@@ -16,6 +17,84 @@ const works: TWorks = [
           },
         ],
       },
+      {
+        title: "Twist Bioscience",
+        slug: "twist",
+        category: "Product Design",
+        description:
+          "Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna.",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 1 Image 1",
+          },
+        ],
+      },
+      {
+        title: "The San Francisco Standard",
+        slug: "san-francisco-standard",
+        category: "Branding",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+      {
+        title: "Figment.io",
+        slug: "figment",
+        category: "Branding",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+      {
+        title: "Chariot",
+        slug: "chariot",
+        category: "Branding",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+      {
+        title: "Sufjan Stevens",
+        slug: "sufjan-stevens",
+        category: "Graphic Design",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+      {
+        title: "Lowercase Noises",
+        slug: "lowercase-noises",
+        category: "Graphic Design",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category: "Product Design",
+    items: [
       {
         title: "Hourstack",
         slug: "hourstack",
@@ -131,41 +210,8 @@ const works: TWorks = [
     category: "Branding",
     items: [
       {
-        title: "Figment",
-        slug: "figment",
-        description: "Case Study 3 Description",
-        images: [
-          {
-            src: "/images/case-study-image.jpg",
-            alt: "Case Study 3 Image 1",
-          },
-        ],
-      },
-      {
-        title: "The San Francisco Standard",
-        slug: "san-francisco-standard",
-        description: "Case Study 3 Description",
-        images: [
-          {
-            src: "/images/case-study-image.jpg",
-            alt: "Case Study 3 Image 1",
-          },
-        ],
-      },
-      {
         title: "Motherly",
         slug: "motherly",
-        description: "Case Study 3 Description",
-        images: [
-          {
-            src: "/images/case-study-image.jpg",
-            alt: "Case Study 3 Image 1",
-          },
-        ],
-      },
-      {
-        title: "Chariot",
-        slug: "chariot",
         description: "Case Study 3 Description",
         images: [
           {
@@ -188,6 +234,17 @@ const works: TWorks = [
       {
         title: "nPower",
         slug: "n-power",
+        description: "Case Study 3 Description",
+        images: [
+          {
+            src: "/images/case-study-image.jpg",
+            alt: "Case Study 3 Image 1",
+          },
+        ],
+      },
+      {
+        title: "Patriae",
+        slug: "patriae",
         description: "Case Study 3 Description",
         images: [
           {
@@ -257,17 +314,6 @@ const works: TWorks = [
     category: "Graphic Design",
     items: [
       {
-        title: "Sufjan Stevens",
-        slug: "sufjan-stevens",
-        description: "Case Study 3 Description",
-        images: [
-          {
-            src: "/images/case-study-image.jpg",
-            alt: "Case Study 3 Image 1",
-          },
-        ],
-      },
-      {
         title: "The Classic Crime",
         slug: "the-classic-crime",
         description: "Case Study 3 Description",
@@ -281,17 +327,6 @@ const works: TWorks = [
       {
         title: "RELEVANT Magazine",
         slug: "relevant-magazine",
-        description: "Case Study 3 Description",
-        images: [
-          {
-            src: "/images/case-study-image.jpg",
-            alt: "Case Study 3 Image 1",
-          },
-        ],
-      },
-      {
-        title: "Lowercase Noises",
-        slug: "lowercase-noises",
         description: "Case Study 3 Description",
         images: [
           {

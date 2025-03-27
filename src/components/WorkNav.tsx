@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import type { TWorks } from "../types";
+import { styles } from "./Styles";
 
 const containerVariants = {
   hidden: {
@@ -77,7 +79,33 @@ const listItemVariants = {
   },
 };
 
-export default function WorkNav({ works, scrollToSection }: { works: TWorks, scrollToSection: any}) {
+export default function WorkNav({
+  works,
+  scrollToSection,
+}: {
+  works: TWorks;
+  scrollToSection: any;
+}) {
+  const location = useLocation(); // Using React Router's location
+  const [activeHash, setActiveHash] = useState(location.hash); // Track hash state
+
+  // Track hash change in URL manually using useEffect
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash); // Update active hash when hash changes
+    };
+
+    // Manually monitor hash changes by using window.location.hash directly
+    const interval = setInterval(() => {
+      if (window.location.hash !== activeHash) {
+        handleHashChange();
+      }
+    }, 100); // Check every 100ms for hash change
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, [activeHash]); // Dependency array ensures that effect reruns only when activeHash changes
+
   return (
     <SWorkNav
       variants={containerVariants}
@@ -98,16 +126,30 @@ export default function WorkNav({ works, scrollToSection }: { works: TWorks, scr
             </motion.dt>
             {category.items.map((work) => (
               <motion.dd key={work.slug} variants={listItemVariants}>
-                <StyledWorkNavLink
-                  to={`/work#${work.slug}`}
-                  $active={location.hash === `#${work.slug}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(work.slug);
-                  }}
-                >
-                  {work.title}
-                </StyledWorkNavLink>
+                {work.category ? (
+                  <StyledFeaturedWorkNavLink
+                    to={`/work#${work.slug}`}
+                    $active={activeHash === `#${work.slug}`} // Compare with activeHash
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(work.slug); // Scroll to the relevant section
+                    }}
+                  >
+                    {work.title}
+                    <span>{work.category}</span>
+                  </StyledFeaturedWorkNavLink>
+                ) : (
+                  <StyledWorkNavLink
+                    to={`/work#${work.slug}`}
+                    $active={activeHash === `#${work.slug}`} // Compare with activeHash
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(work.slug); // Scroll to the relevant section
+                    }}
+                  >
+                    {work.title}
+                  </StyledWorkNavLink>
+                )}
               </motion.dd>
             ))}
           </>
@@ -117,14 +159,16 @@ export default function WorkNav({ works, scrollToSection }: { works: TWorks, scr
   );
 }
 
-
 const SWorkNav = styled(motion.div)`
-  width: 220px;
+  width: ${styles.measurements.workNavWidth}px;
   position: fixed;
-  left: 32px;
+  left: ${styles.measurements.desktopMargin}px;
   top: 100px;
+  padding-right: ${styles.measurements.desktopMargin}px;
   z-index: 1000;
+  font-size: 0.9em;
   dt {
+    font-weight: 700;
     padding-top: 20px;
     display: block;
     line-height: 160%;
@@ -132,9 +176,31 @@ const SWorkNav = styled(motion.div)`
 `;
 
 const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
-  font-size: 1em;
-  margin-left: 12px;
   line-height: 160%;
   font-weight: 300;
-  color: ${(props) => (props.$active ? "#0070f3" : "#555")} !important;
+  color: ${(props) =>
+    props.$active ? styles.colors.active : styles.colors.black} !important;
+  .about & {
+    color: ${(props) =>
+      props.$active ? styles.colors.active : styles.colors.white} !important;
+  }
+`;
+
+const StyledFeaturedWorkNavLink = styled(Link)<{ $active: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  line-height: 160%;
+  font-weight: 300;
+  color: ${(props) =>
+    props.$active ? styles.colors.active : styles.colors.black} !important;
+  .about & {
+    color: ${(props) =>
+      props.$active ? styles.colors.active : styles.colors.white} !important;
+  }
+  span {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-family: ${styles.type.mono};
+  }
+  border-bottom: 1px solid ${styles.colors.offBlack};
 `;

@@ -1,86 +1,95 @@
-import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import WorkNav from "../components/WorkNav";
 import works from "../data/works";
 import styled from "styled-components";
+import { styles } from "../components/Styles";
+import { useRef, useEffect, memo } from "react";
+import { throttle } from "lodash"; // Throttling function
 
-export default function Work() {
-  const navigate = useNavigate();
+const Work = function Work() {
+  console.log("Rendering Work Component");
+
   const location = useLocation();
-  const { study } = useParams();
-  const [activeSection, setActiveSection] = useState("");
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
+  const activeSectionRef = useRef<string>("");
+  const navigate = useNavigate();
 
-  // Function to scroll to the section and update the URL
+  // Function to scroll to a section manually when hash changes
   const scrollToSection = (section: string) => {
     if (sectionsRef.current[section]) {
       sectionsRef.current[section]?.scrollIntoView({
         block: "start",
       });
-      // Update the URL hash
-      window.location.hash = `#${section}`;
     }
   };
 
-  // Intersection observer logic to update active section and URL when it's at the top
-  const handleScroll = () => {
+  // Only update when hash actually changes (avoid unnecessary state updates)
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    if (hash && sectionsRef.current[hash]) {
+      scrollToSection(hash);
+      if (activeSectionRef.current !== hash) {
+        activeSectionRef.current = hash; // Set the ref instead of state
+      }
+    }
+  }, [location.hash]); // Effect runs only when location.hash changes
 
-    // const scrollPosition = window.scrollY;
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    if(!hash) {
+      navigate(`/work#${works[0].items[0].slug}`, { replace: true });
+    }
+  }, [])
+
+  // Intersection observer to detect which section is currently in view
+  const handleScroll = throttle(() => {
     let currentSection = "";
-
     Object.entries(sectionsRef.current).forEach(([id, section]) => {
       if (section) {
         const sectionRect = section.getBoundingClientRect();
-        // Check if the section is at the top of the viewport
-        if (sectionRect.top <= 0 && sectionRect.bottom > 0) {
+        if (sectionRect.top <= 200 && sectionRect.bottom > 0) {
           currentSection = id;
         }
       }
     });
 
-    if (currentSection && currentSection !== activeSection) {
-      setActiveSection(currentSection);
-      // Update the URL to include the hash (so the browser address updates as we scroll)
-      navigate(`/work#${currentSection}`, { replace: true });
+    if (currentSection && currentSection !== activeSectionRef.current) {
+      activeSectionRef.current = currentSection;
+      // Manually update the URL hash to avoid causing a page reload
+      window.history.replaceState(null, "", `#${currentSection}`);
     }
-  };
+  }, 100); // Throttle to once every 100ms
 
   useEffect(() => {
-    // If the URL is just /work (without any hash) and we're not already on the desired hash
-    const firstCategory = Object.keys(works)[0] as keyof typeof works;
-    const firstWorkSlug = works[0].items[0].slug;
-    if (
-      location.hash === "" &&
-      window.location.hash !== firstWorkSlug
-    ) {
-      setActiveSection(firstWorkSlug);
-      navigate(`/work#${firstWorkSlug}`, { replace: true });
-    }
-  }, []);
-
-  useEffect(() => {
-    // Initialize the scroll listener
     window.addEventListener("scroll", handleScroll);
-
     return () => {
-      // Clean up scroll listener
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [activeSection, navigate]);
-
-  // Smooth scroll to the section when the hash changes (e.g., from manual navigation)
-  useEffect(() => {
-    const workFromHash = window.location.hash.substring(1);
-    if (workFromHash && sectionsRef.current[workFromHash]) {
-      sectionsRef.current[workFromHash].scrollIntoView({
-        block: "start",
-      });
-      setActiveSection(workFromHash);
-    }
   }, []);
+
+  // Memoized component for individual work items
+  const Item = memo(({ item }: { item: any }) => {
+    return (
+      <SWork
+        key={item.slug}
+        id={item.slug}
+        ref={(el) => {
+          if (el) sectionsRef.current[item.slug] = el;
+        }}
+      >
+        <SDescription>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </SDescription>
+        <SImage>
+          {item.images.map((image: any) => (
+            <img key={image.src} src={image.src} alt={`${image.alt}`} />
+          ))}
+        </SImage>
+      </SWork>
+    );
+  });
 
   return (
     <>
@@ -88,35 +97,18 @@ export default function Work() {
         <WorkNav works={works} scrollToSection={scrollToSection} />,
         document.body
       )}
-
       <SWorks>
-        {works.flatMap(category => category.items)
+        {works
+          .flatMap((category) => category.items)
           .map((work) => (
-            <SWork
-              key={work.slug}
-              ref={(el) => {
-                if (el) sectionsRef.current[work.slug] = el;
-              }}
-            >
-              <SDescription>
-                <h2>
-                  {work.title}
-                </h2>
-                <p>
-                  {work.description}
-                </p>
-              </SDescription>
-              <SImage>
-              {work.images.map((image) => (
-                <img key={image.src} src={image.src} alt={`${image.alt}`} />
-              ))}
-              </SImage>
-            </SWork>
+            <Item item={work} key={work.slug} />
           ))}
       </SWorks>
     </>
   );
-}
+};
+
+export default Work;
 
 const SWork = styled.div`
   display: flex;
@@ -132,7 +124,7 @@ const SImage = styled.div`
     margin-bottom: 0;
     display: block;
   }
-`
+`;
 
 const SDescription = styled.div`
   width: 300px;
@@ -145,26 +137,11 @@ const SDescription = styled.div`
   p {
     font-size: 1rem;
   }
-
-`
-
-const SWorkNav = styled(motion.div)`
-  width: 220px;
-  position: fixed;
-  left: 0;
-  top: 50px;
-  padding: 1rem;
-  z-index: 1000;
-  background-color: orange;
-`;
-
-const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
-  font-weight: ${(props) => (props.$active ? "bold" : "normal")};
-  color: ${(props) => (props.$active ? "#0070f3" : "#555")};
 `;
 
 const SWorks = styled.div`
-  margin-left: 220px;
-  padding-right: 32px;
+  margin-left: ${styles.measurements.workNavWidth +
+  styles.measurements.desktopMargin * 2}px;
+  padding-right: ${styles.measurements.desktopMargin}px;
   padding-bottom: 40vh;
 `;

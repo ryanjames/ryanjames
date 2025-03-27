@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { styles } from "../components/Styles";
 import {
   heroVariants,
 } from "../animations";
@@ -22,7 +23,7 @@ const SHero = styled.div`
   top: 0;
   bottom: 0;
   left: 0;
-  padding-left: 32px;
+  padding-left: ${styles.measurements.desktopMargin}px;
   width: 100%;
   display: flex;
   align-items: center;

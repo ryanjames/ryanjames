@@ -34,17 +34,20 @@ function AnimatedRoutes() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.pathname]); // Only trigger when pathname changes
+
+  console.log("Reloading App");
 
   return (
     <>
       <SGlobal />
       <Header />
       <SMain>
-        <AnimatePresence>
+        {/* AnimatePresence only wraps route changes */}
+        <AnimatePresence mode="wait">
           {isPageReady && (
             <motion.div
-              key={location.pathname}
+              key={location.pathname} // Only use pathname here
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, filter: "blur(10px)" }}

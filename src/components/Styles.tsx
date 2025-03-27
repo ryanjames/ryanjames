@@ -1,5 +1,23 @@
 import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
+import type { TStyles } from "../types";
+
+export const styles: TStyles = {
+  type: {
+    sans: `'Nacelle', system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
+    mono: `"SF Mono", "Menlo", "Consolas", "Liberation Mono", "Courier New", monospace`,
+  },
+  colors: {
+    black: "rgb(16, 18, 20)",
+    white: "rgb(255, 255, 255)",
+    active: "rgb(0, 112, 243)",
+  },
+  measurements: {
+    workNavWidth: 300,
+    desktopMargin: 32,
+  }
+}
+
+styles.colors.offBlack = styles.colors.black.replace("rgb", "rgba").replace(")", ", 0.2)");
 
 export const SGlobal = createGlobalStyle`
   @font-face {
@@ -47,27 +65,27 @@ export const SGlobal = createGlobalStyle`
   .header-bar {
     transition: all 0.5s ease-in-out;
     .about & {
-      border-color: #ffffff;
+      border-color: ${styles.colors.white};
     }
   }
 
   body {
     transition: all 0.5s ease-in-out;
     overscroll-behavior: none;
-    font-family: 'Nacelle', system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: ${styles.type.sans};
     font-weight: 300;
-    background-color: #ffffff;
-    color: #101214;
+    background-color: ${styles.colors.white};
+    color: ${styles.colors.black};
     a, a:active, a:hover, a:visited {
-      color: #101214;
+      color: ${styles.colors.black};
       text-decoration: none;
     }
   }
   &.about {
-    color: #ffffff;
-    background-color: #101214;
+    color: ${styles.colors.white};
+    background-color: ${styles.colors.black};
     a, a:active, a:hover, a:visited {
-      color: #ffffff;
+      color: ${styles.colors.white};
     }
   }
 `;

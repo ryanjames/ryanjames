@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { styles } from "./Styles";
 
 export default function Header() {
   const location = useLocation();
@@ -96,7 +97,7 @@ const SHeader = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 32px;
+  padding: 0 ${styles.measurements.desktopMargin}px;
   backdrop-filter: blur(10px);
 `;
 const SHeaderInner = styled.div`
@@ -138,7 +139,7 @@ const SBar = styled(motion.div)`
   position: absolute;
   bottom: 0;
   width: 100%;
-  border-bottom: 1px solid #101214;
+  border-bottom: 1px solid ${styles.colors.black};
 `;
 
 const StyledNavLink = styled(Link)<{ $active: boolean }>`
@@ -147,14 +148,11 @@ const StyledNavLink = styled(Link)<{ $active: boolean }>`
   font-size: 1rem;
   font-weight: 300;
   color: ${(props) =>
-    props.$active ? "#0070f3" : "#101214;"} !important;
+    props.$active ?  styles.colors.active : styles.colors.black} !important;
   .about & {
-    color: ${(props) => (props.$active ? "#0070f3" : "#ffffff")} !important;
+    color: ${(props) => (props.$active ? styles.colors.active : styles.colors.white)} !important;
   }
   &:hover {
-    color: #0070f3;
-  }
-  .about &:hover {
-    color: pink;
+    color: ${styles.colors.active} !important;
   }
 `;
