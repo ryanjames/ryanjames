@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import works from "../work";
+import WorkNav from "../components/WorkNav";
+import works from "../data/works";
 import styled from "styled-components";
 
 export default function Work() {
@@ -50,7 +51,7 @@ export default function Work() {
   useEffect(() => {
     // If the URL is just /work (without any hash) and we're not already on the desired hash
     const firstCategory = Object.keys(works)[0] as keyof typeof works;
-    const firstWorkSlug = works[firstCategory][0].slug;
+    const firstWorkSlug = works[0].items[0].slug;
     if (
       location.hash === "" &&
       window.location.hash !== firstWorkSlug
@@ -84,40 +85,12 @@ export default function Work() {
   return (
     <>
       {createPortal(
-        <SWorkNav
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-        >
-          {Object.entries(works).map(([category, categoryWorks]) => (
-            <div key={category}>
-              <h2>{category}</h2>
-              <ul>
-                {categoryWorks.map((work) => (
-                  <li key={work.slug}>
-                    <StyledWorkNavLink
-                      to={`/work#${work.slug}`} // Update to hash-based path
-                      $active={location.hash === `#${work.slug}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(work.slug); // Use smooth scroll
-                      }}
-                    >
-                      {work.title}
-                    </StyledWorkNavLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </SWorkNav>,
+        <WorkNav works={works} scrollToSection={scrollToSection} />,
         document.body
       )}
 
       <SWorks>
-        {Object.values(works)
-          .flat()
+        {works.flatMap(category => category.items)
           .map((work) => (
             <SWork
               key={work.slug}

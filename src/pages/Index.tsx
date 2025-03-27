@@ -1,19 +1,35 @@
 import { motion } from "framer-motion";
+import styled from "styled-components";
 import {
-  titleVariants,
-  paragraphVariants,
+  heroVariants,
 } from "../animations";
 
 export default function Index() {
   return (
-      <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        style={{ position: "absolute", width: "100%", top: 0, left: 0 }}
-      >
-        <motion.h1 variants={titleVariants}>Welcome to Index</motion.h1>
-        <motion.p variants={paragraphVariants}>This is the homepage.</motion.p>
-      </motion.div>
+    <SHero>
+      <motion.h2 variants={heroVariants} initial="initial" animate="animate" exit="exit">
+        Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+        venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat
+        porttitor ligula, eget lacinia odio sem nec elit. 
+      </motion.h2>
+    </SHero>
   );
 }
+
+const SHero = styled.div`
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-left: 32px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: 4em;
+    font-weight: 300;
+    width: 65%;
+    line-height: 100%;
+  }
+`

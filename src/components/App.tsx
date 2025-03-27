@@ -29,15 +29,12 @@ function AnimatedRoutes() {
   useEffect(() => {
     setIsPageReady(false);
 
-    // Only change isPageReady on full pathname changes, not on hash changes.
     const timer = setTimeout(() => {
       setIsPageReady(true);
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]); // Only depend on pathname
-
-  console.log("Test");
+  }, [location.pathname]);
 
   return (
     <>
@@ -47,7 +44,7 @@ function AnimatedRoutes() {
         <AnimatePresence>
           {isPageReady && (
             <motion.div
-              key={location.pathname} // key is set to location.pathname for full route changes
+              key={location.pathname}
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, filter: "blur(10px)" }}
@@ -78,5 +75,5 @@ const SMain = styled.main`
   top: 0;
   left: 0;
   right: 0;
-  background: pink;
+  bottom: 0;
 `;

@@ -1,27 +1,41 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import {
-  titleVariants,
-  paragraphVariants,
-  buttonVariants,
-} from "../animations";
-
 export default function About() {
+
+  useEffect(() => {
+    document.body.classList.add("about");
+
+    return () => {
+      document.body.classList.remove("about");
+    };
+  }, []);
+
   return (
-    <motion.div
+    <SAbout
       initial="initial"
       animate="animate"
       exit="exit"
-      style={{ position: "absolute", width: "100%", top: 0, left: 0 }}
     >
-        <motion.h1 variants={titleVariants}>About Page</motion.h1>
-        <motion.p variants={paragraphVariants}>
+        <motion.h1>About Page</motion.h1>
+        <motion.p>
           Here's the about section.
         </motion.p>
         <Link to="/">
-          <motion.button variants={buttonVariants}>Back to Index</motion.button>
+          <motion.button>Back to Index</motion.button>
         </Link>
-    </motion.div>
+    </SAbout>
   );
 }
+
+const SAbout = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding-top: 80px;
+  left: 0;
+  bottom: 0;
+`;
