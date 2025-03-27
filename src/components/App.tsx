@@ -4,7 +4,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -22,17 +21,23 @@ export default function App() {
     </Router>
   );
 }
+
 function AnimatedRoutes() {
   const location = useLocation();
   const [isPageReady, setIsPageReady] = useState(false);
 
   useEffect(() => {
     setIsPageReady(false);
+
+    // Only change isPageReady on full pathname changes, not on hash changes.
     const timer = setTimeout(() => {
       setIsPageReady(true);
     }, 100);
+
     return () => clearTimeout(timer);
-  }, [location]);
+  }, [location.pathname]); // Only depend on pathname
+
+  console.log("Test");
 
   return (
     <>
@@ -42,7 +47,7 @@ function AnimatedRoutes() {
         <AnimatePresence>
           {isPageReady && (
             <motion.div
-              key={location.pathname}
+              key={location.pathname} // key is set to location.pathname for full route changes
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, filter: "blur(10px)" }}
@@ -55,7 +60,7 @@ function AnimatedRoutes() {
                 zIndex: 1,
               }}
             >
-              <Routes location={location} key={location.pathname}>
+              <Routes location={location}>
                 <Route path="/" element={<Index />} />
                 <Route path="/work" element={<Work />} />
                 <Route path="/about" element={<About />} />

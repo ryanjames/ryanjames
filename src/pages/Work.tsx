@@ -3,27 +3,20 @@ import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import works from "../work";
 import styled from "styled-components";
-
-const caseStudies = {
-  Branding: ["case-study-1", "case-study-2"],
-  "Product Design": ["case-study-3", "case-study-4"],
-};
 
 export default function Work() {
   const navigate = useNavigate();
   const location = useLocation();
   const { study } = useParams();
   const [activeSection, setActiveSection] = useState("");
-  const [isScrollingManually, setIsScrollingManually] = useState(false);
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
   // Function to scroll to the section and update the URL
   const scrollToSection = (section: string) => {
-    setIsScrollingManually(true); // Set manual scroll flag
     if (sectionsRef.current[section]) {
       sectionsRef.current[section]?.scrollIntoView({
-        behavior: "smooth",
         block: "start",
       });
       // Update the URL hash
@@ -33,9 +26,8 @@ export default function Work() {
 
   // Intersection observer logic to update active section and URL when it's at the top
   const handleScroll = () => {
-    if (isScrollingManually) return; // Ignore scroll events while scrolling manually
 
-    const scrollPosition = window.scrollY;
+    // const scrollPosition = window.scrollY;
     let currentSection = "";
 
     Object.entries(sectionsRef.current).forEach(([id, section]) => {
@@ -57,10 +49,16 @@ export default function Work() {
 
   useEffect(() => {
     // If the URL is just /work (without any hash) and we're not already on the desired hash
-    if (location.hash === "" && window.location.hash !== "#case-study-1") {
-      navigate("/work#case-study-1", { replace: true });
+    const firstCategory = Object.keys(works)[0] as keyof typeof works;
+    const firstWorkSlug = works[firstCategory][0].slug;
+    if (
+      location.hash === "" &&
+      window.location.hash !== firstWorkSlug
+    ) {
+      setActiveSection(firstWorkSlug);
+      navigate(`/work#${firstWorkSlug}`, { replace: true });
     }
-  }, [location, navigate]);
+  }, []);
 
   useEffect(() => {
     // Initialize the scroll listener
@@ -70,45 +68,43 @@ export default function Work() {
       // Clean up scroll listener
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [activeSection, navigate, isScrollingManually]);
-
-  // Reset the flag after the scroll animation is done
-  useEffect(() => {
-    if (isScrollingManually) {
-      setTimeout(() => {
-        setIsScrollingManually(false); // Reset manual scroll flag after 1000ms (time for scroll)
-      }, 1000); // 1 second delay to give time for scroll animation to finish
-    }
-  }, [isScrollingManually]);
+  }, [activeSection, navigate]);
 
   // Smooth scroll to the section when the hash changes (e.g., from manual navigation)
   useEffect(() => {
-    const studyFromHash = window.location.hash.substring(1);
-    if (studyFromHash && sectionsRef.current[studyFromHash]) {
-      sectionsRef.current[studyFromHash].scrollIntoView({ behavior: "smooth" });
-      setActiveSection(studyFromHash);
+    const workFromHash = window.location.hash.substring(1);
+    if (workFromHash && sectionsRef.current[workFromHash]) {
+      sectionsRef.current[workFromHash].scrollIntoView({
+        block: "start",
+      });
+      setActiveSection(workFromHash);
     }
   }, []);
 
   return (
     <>
       {createPortal(
-        <SWorkNav>
-          {Object.entries(caseStudies).map(([category, studies]) => (
+        <SWorkNav
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
+          {Object.entries(works).map(([category, categoryWorks]) => (
             <div key={category}>
               <h2>{category}</h2>
               <ul>
-                {studies.map((study) => (
-                  <li key={study}>
+                {categoryWorks.map((work) => (
+                  <li key={work.slug}>
                     <StyledWorkNavLink
-                      to={`/work#${study}`} // Update to hash-based path
-                      $active={location.hash === `#${study}`}
+                      to={`/work#${work.slug}`} // Update to hash-based path
+                      $active={location.hash === `#${work.slug}`}
                       onClick={(e) => {
                         e.preventDefault();
-                        scrollToSection(study); // Use smooth scroll
+                        scrollToSection(work.slug); // Use smooth scroll
                       }}
                     >
-                      {study.replace(/-/g, " ")}
+                      {work.title}
                     </StyledWorkNavLink>
                   </li>
                 ))}
@@ -119,36 +115,33 @@ export default function Work() {
         document.body
       )}
 
-      {/* Case Study Content */}
-      <SCaseStudies>
-        {Object.values(caseStudies)
+      <SWorks>
+        {Object.values(works)
           .flat()
-          .map((study) => (
-            <SCaseStudy
-              key={study}
+          .map((work) => (
+            <SWork
+              key={work.slug}
               ref={(el) => {
-                if (el) sectionsRef.current[study] = el;
+                if (el) sectionsRef.current[work.slug] = el;
               }}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold mb-4">
-                {study.replace(/-/g, " ")}
+              <h2>
+                {work.title}
               </h2>
-              <p className="text-lg text-gray-600">
-                Description of {study.replace(/-/g, " ")} with details.
+              <p>
+                {work.description}
               </p>
-              <img src={`/images/${study}-1.jpg`} alt={`${study}`} />
-              <img src={`/images/${study}-2.jpg`} alt={`${study}`} />
-            </SCaseStudy>
+              {work.images.map((image) => (
+                <img key={image.src} src={image.src} alt={`${image.alt}`} />
+              ))}
+            </SWork>
           ))}
-      </SCaseStudies>
+      </SWorks>
     </>
   );
 }
 
-const SCaseStudy = styled(motion.section)`
+const SWork = styled.div`
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -163,7 +156,7 @@ const SCaseStudy = styled(motion.section)`
   }
 `;
 
-const SWorkNav = styled.div`
+const SWorkNav = styled(motion.div)`
   width: 220px;
   position: fixed;
   left: 0;
@@ -178,11 +171,7 @@ const StyledWorkNavLink = styled(Link)<{ $active: boolean }>`
   color: ${(props) => (props.$active ? "#0070f3" : "#555")};
 `;
 
-const SCaseStudies = styled.div`
+const SWorks = styled.div`
   margin-left: 220px;
-  padding: 2rem;
-
-  & > * + * {
-    margin-top: 0.5rem;
-  }
+  padding-bottom: 40vh;
 `;
