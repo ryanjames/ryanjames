@@ -4,6 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -70,7 +71,6 @@ function AnimatedRoutes() {
 const SMain = styled.main`
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
   background: pink;
