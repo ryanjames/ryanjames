@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import WorkNav from "../components/WorkNav";
 import works from "../data/works";
 import styled from "styled-components";
@@ -100,6 +101,10 @@ const Work = function Work() {
 
   return (
     <>
+      <Helmet>
+        <title>Ryan James - Work</title>
+        <meta name="description" content="Ryan James - Work" />
+      </Helmet>
       {createPortal(
         <WorkNav works={works} scrollToSection={scrollToSection} />,
         document.body

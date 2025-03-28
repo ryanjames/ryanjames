@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { styles } from "../components/Styles";
 import { heroVariants } from "../animations";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 export default function About() {
 
@@ -16,6 +17,10 @@ export default function About() {
 
   return (
     <SAbout initial="initial" animate="animate" exit="exit">
+      <Helmet>
+        <title>Ryan James - About</title>
+        <meta name="description" content="Ryan James - About" />
+      </Helmet>
       <SContent>
         <motion.p
           variants={heroVariants}
@@ -24,16 +29,17 @@ export default function About() {
           exit="exit"
         >
           <p>
-          Whether designing intuitive user experiences, building comprehensive design systems, diving deep into the code, defining the
-          archetypes of a brand, or bringing other artists' visions to life, Ryan James brings a thoughtful, joyful, adaptable approach to every project.
+            Whether designing intuitive user experiences, building comprehensive
+            design systems, diving deep into the code, defining the archetypes
+            of a brand, or bringing other artists' visions to life, Ryan James
+            brings a thoughtful, joyful, adaptable approach to every project.
           </p>
           <p>
-          Known for his versatility and curiosity,
-          he has worked with small agile teams and large structured
-          organizations, seamlessly adapting to different challenges. With
-          experience in leadership roles, Ryan combines strategic thinking with
-          hands-on execution, ensuring that the projects he's involved with are
-          both innovative and effective. 
+            Known for his versatility and curiosity, he has worked with small
+            agile teams and large structured organizations, seamlessly adapting
+            to different challenges. With experience in leadership roles, Ryan
+            combines strategic thinking with hands-on execution, ensuring that
+            the projects he's involved with are both innovative and effective.
           </p>
         </motion.p>
       </SContent>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { styles } from "../components/Styles";
 import {
   heroVariants,
@@ -9,6 +10,10 @@ import {
 export default function Index() {
   return (
     <SHero>
+      <Helmet>
+        <title>Ryan James - Designer and Developer</title>
+        <meta name="description" content="Ryan James - Designer and Developer" />
+      </Helmet>
       <motion.div
         variants={heroVariants}
         initial="initial"
@@ -16,11 +21,12 @@ export default function Index() {
         exit="exit"
       >
         <h2>
-        Ryan James is a multidisciplinary designer and developer with 20+ years
-        of experience. He combines strategic thinking with hands-on execution,
-        working seamlessly in teams of all sizes. From UX, interface design, and
-        design systems to bringing brands and artists’ visions to life, he takes
-        a thoughtful, enthusiastic approach to every project.
+          Ryan James is a multidisciplinary designer and developer with 20+
+          years of experience. He combines strategic thinking with hands-on
+          execution, working seamlessly in teams of all sizes. From UX,
+          interface design, and design systems to bringing brands and artists’
+          visions to life, he takes a thoughtful, enthusiastic approach to every
+          project.
         </h2>
         <div>
           <SButton to="/work">View Work</SButton>
