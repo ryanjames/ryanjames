@@ -183,7 +183,7 @@ const SDescription = styled.div`
   width: 100%;
   background-color: ${styles.colors.white};
   z-index: 2;
-  top: 60px;
+  top: 40px;
   padding-top: 30px;
   padding-left: ${styles.measurements.mobile.margin}px;
   padding-right: ${styles.measurements.mobile.margin}px;
@@ -191,6 +191,7 @@ const SDescription = styled.div`
     color: ${styles.colors.active} !important;
   }
   @media (min-width: ${styles.breakpoints.small}px) {
+    top: 60px;
     padding-left: 0;
     padding-right: 0;
   }
