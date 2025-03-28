@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { styles } from "../components/Styles";
 import {
   heroVariants,
@@ -8,14 +9,37 @@ import {
 export default function Index() {
   return (
     <SHero>
-      <motion.h2 variants={heroVariants} initial="initial" animate="animate" exit="exit">
-        Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-        venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat
-        porttitor ligula, eget lacinia odio sem nec elit. 
-      </motion.h2>
+      <motion.div
+        variants={heroVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <h2>
+        Ryan James is a multidisciplinary designer and developer with 20+ years
+        of experience. He combines strategic thinking with hands-on execution,
+        working seamlessly in teams of all sizes. From UX, interface design, and
+        design systems to bringing brands and artists’ visions to life, he takes
+        a thoughtful, enthusiastic approach to every project.
+        </h2>
+        <div>
+          <SButton to="/work">View Work</SButton>
+        </div>
+      </motion.div>
     </SHero>
   );
 }
+
+const SButton = styled(Link)`
+  font-size: 1rem;
+  border-radius: 3px;
+  margin-top: 1.5em;
+  background: ${styles.colors.active};
+  color: ${styles.colors.white} !important;
+  display: inline-block;
+  line-height: 100%;
+  padding: 1em 1em;
+`
 
 const SHero = styled.div`
   position: absolute;
@@ -33,18 +57,23 @@ const SHero = styled.div`
   h2 {
     font-weight: 300;
     width: 90%;
-    font-size: 2em;
+    line-height: 120%;
+    font-size: 1.4em;
     @media (min-width: ${styles.breakpoints.small}px) {
-      font-size: 3em;
-      width: 80%;
+      font-size: 1.6em;
     }
     @media (min-width: ${styles.breakpoints.medium}px) {
-      font-size: 3.5em;
+      padding-top: ${styles.measurements.desktop.headerHeight}px;
+      font-size: 2em;
+      width: 80%;
     }
     @media (min-width: ${styles.breakpoints.large}px) {
-      font-size: 4em;
+      font-size: 2.2em;
       width: 65%;
     }
-    line-height: 100%;
+    @media (min-width: ${styles.breakpoints.xLarge}px) {
+      font-size: 2.5em;
+      width: 55%;
+    }
   }
 `;

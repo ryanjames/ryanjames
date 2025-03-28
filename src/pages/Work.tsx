@@ -48,7 +48,7 @@ const Work = function Work() {
     Object.entries(sectionsRef.current).forEach(([id, section]) => {
       if (section) {
         const sectionRect = section.getBoundingClientRect();
-        if (sectionRect.top <= 0 && sectionRect.bottom > 0) {
+        if (sectionRect.top <= 120 && sectionRect.bottom > 0) {
           currentSection = id;
         }
       }
@@ -86,7 +86,7 @@ const Work = function Work() {
             ) : (
               <SCategory>{category}</SCategory>
             )}
-            <p>{item.description}</p>
+            <div className="description" dangerouslySetInnerHTML={{ __html: item.description }} />
           </SDescription>
           <SImage>
             {item.images.map((image: any) => (
@@ -124,33 +124,40 @@ const Work = function Work() {
 export default Work;
 
 const SWork = styled.div`
-  &:first-child > div {
-    border-top: 0;
-  }
-  padding-top: 40px;
-  @media (min-width: ${styles.breakpoints.small}px) {
-    padding-top: 79px;
-  }
+  scroll-margin: 78px;
 `;
 
 const SWorkInner = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+
+  @media (min-width: ${styles.breakpoints.small}px) {
+    margin-top: 79px;
+  }
+
   @media (min-width: ${styles.breakpoints.small}px) {
     border-top: 1px solid ${styles.colors.black};
   }
+
   @media (min-width: ${styles.breakpoints.xLarge}px) {
     flex-direction: row;
+    align-items: flex-start; /* Ensures SDescription and SImage align properly */
   }
 `;
 
 const SImage = styled.div`
   flex: 1;
+  padding-top: 40px;
   img {
     width: 100%;
     height: auto;
-    margin-bottom: 0;
+    margin-bottom: 40px;
     display: block;
+    border: 1px solid #ddd;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -158,40 +165,60 @@ const SCategory = styled.span`
   font-family: ${styles.type.mono};
   text-transform: uppercase;
   font-size: 0.8em;
-  margin-bottom: 0.6em;
   display: block;
-  @media (min-width: ${styles.breakpoints.large}px) {
-    display: none;
+  margin-bottom: 0.85em;
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
+    margin-bottom: 0.6em;
   }
 `;
 
 const SDescription = styled.div`
+  position: sticky;
+  align-self: flex-start;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  width: 100%;
+  background-color: ${styles.colors.white};
+  z-index: 2;
+  top: 60px;
   padding-top: 30px;
-  padding-bottom: 24px;
   padding-left: ${styles.measurements.mobile.margin}px;
   padding-right: ${styles.measurements.mobile.margin}px;
+  a {
+    color: ${styles.colors.active} !important;
+  }
   @media (min-width: ${styles.breakpoints.small}px) {
     padding-left: 0;
     padding-right: 0;
   }
   @media (min-width: ${styles.breakpoints.xLarge}px) {
+    display: block;
+    padding-bottom: 24px;
+    top: 100px;
     width: 300px;
     padding-right: 40px;
     padding-bottom: 0;
   }
+
   h2 {
     font-size: 1.2em;
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 0.4em;
   }
+
   p {
     font-size: 0.9em;
   }
+
   @media (min-width: ${styles.breakpoints.medium}px) {
     h2 {
       font-size: 1.5em;
     }
+
     p {
       font-size: 1em;
     }

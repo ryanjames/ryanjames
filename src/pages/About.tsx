@@ -23,9 +23,18 @@ export default function About() {
           animate="animate"
           exit="exit"
         >
-          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
-          vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor
-          ligula, eget lacinia odio sem nec elit.
+          <p>
+          Whether designing intuitive user experiences, building comprehensive design systems, diving deep into the code, defining the
+          archetypes of a brand, or bringing other artists' visions to life, Ryan James brings a thoughtful, joyful, adaptable approach to every project.
+          </p>
+          <p>
+          Known for his versatility and curiosity,
+          he has worked with small agile teams and large structured
+          organizations, seamlessly adapting to different challenges. With
+          experience in leadership roles, Ryan combines strategic thinking with
+          hands-on execution, ensuring that the projects he's involved with are
+          both innovative and effective. 
+          </p>
         </motion.p>
       </SContent>
       <img src="/images/ryan-james.jpg" alt="Ryan James" />
@@ -35,21 +44,30 @@ export default function About() {
 
 const SContent = styled.div`
   position: relative;
-  width: 80%;
   z-index: 2;
-  font-size: 2em;
   padding-left: ${styles.measurements.desktop.margin}px;
+  width: 90%;
+  line-height: 120%;
+  font-size: 1em;
   @media (min-width: ${styles.breakpoints.small}px) {
-    font-size: 3em;
+    font-size: 1.3em;
   }
   @media (min-width: ${styles.breakpoints.medium}px) {
-    width: 50%;
+    width: 55%;
+    font-size: 1.3em;
+  }
+  @media (min-width: ${styles.breakpoints.large}px) {
+    font-size: 1.5em;
+  }
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
+    font-size: 1.75em;
+    width: 55%;
   }
   p {
     font-weight: 300;
-    line-height: 100%;
+    margin-bottom: 1.5em;
   }
-`
+`;
 
 const SAbout = styled(motion.div)`
   position: absolute;
