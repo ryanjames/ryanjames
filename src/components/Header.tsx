@@ -48,9 +48,6 @@ export default function Header() {
 
   return (
     <SHeader
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <SHeaderInner>
         <SLogo to="/">
@@ -97,17 +94,26 @@ const SHeader = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 ${styles.measurements.desktopMargin}px;
-  backdrop-filter: blur(10px);
+  padding: 0 ${styles.measurements.mobile.margin}px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    padding: 0 ${styles.measurements.desktop.margin}px;
+  }
+  .about & {
+    background: transparent;
+  }
+  background: ${styles.colors.white};
 `;
 const SHeaderInner = styled.div`
   position: relative;
   width: 100%;
-  height: 80px;
+  height: ${styles.measurements.mobile.headerHeight}px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    height: ${styles.measurements.desktop.headerHeight}px;
+  }
   overflow: hidden;
   display: flex;
   align-items: center;
-`
+`;
 
 
 const SLogo = styled(Link)`
@@ -115,7 +121,7 @@ const SLogo = styled(Link)`
   height: 100%;
   justify-content: center;
   align-items: center;
-  font-family: "SF Mono";
+  font-family: ${styles.type.mono};
   display: flex;
   white-space: pre;
   h1 {
@@ -133,7 +139,7 @@ const SNavigation = styled(motion.nav)`
   justify-content: flex-end;
   width: 100%;
   gap: 1.5rem;
-  font-family: "SF Mono";
+  font-family: ${styles.type.mono};
 `;
 const SBar = styled(motion.div)`
   position: absolute;

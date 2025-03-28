@@ -1,15 +1,17 @@
+export type TWork = {
+  title: string;
+  slug: string;
+  category?: string;
+  description: string;
+  images: {
+    src: string;
+    alt: string;
+  }[];
+};
+
 export type TWorks = {
   category: string;
-  items: {
-    title: string;
-    slug: string;
-    category?: string;
-    description: string;
-    images: {
-      src: string;
-      alt: string;
-    }[];
-  }[];
+  items: TWork[]
 }[];
 
 type TFontTypes = {
@@ -25,12 +27,27 @@ type TColors = {
 };
 
 type TMeasurements = {
-  workNavWidth: number;
-  desktopMargin: number;
+  desktop: {
+    workNavWidth: number;
+    margin: number;
+    headerHeight: number;
+  };
+  mobile: {
+    headerHeight: number;
+    margin: number;
+  }
+};
+
+type TBreakpoints = {
+  small: number;
+  medium: number;
+  large: number;
+  xLarge: number;
 };
 
 export type TStyles = {
   type: TFontTypes;
   colors: TColors;
   measurements: TMeasurements;
+  breakpoints: TBreakpoints;
 };

@@ -109,7 +109,7 @@ const works: TWorks = [
       },
       {
         title: "Innovationist",
-        slug: "Innovationist",
+        slug: "innovationist",
         description:
           "Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna.",
         images: [

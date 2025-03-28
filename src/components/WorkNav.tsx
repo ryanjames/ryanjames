@@ -14,15 +14,15 @@ const containerVariants = {
     opacity: 1,
     x: "0", // Bring into view
     transition: {
-      duration: 0.6,
+      duration: 0.2,
       ease: "easeInOut",
     },
   },
   exit: {
-    opacity: 0,
-    x: "-100%", // Off-screen left
+    opacity: 1,
+    x: "0", // Off-screen left
     transition: {
-      duration: 1.6,
+      duration: 0.2,
       ease: "easeInOut",
     },
   },
@@ -37,20 +37,19 @@ const categoryVariants = {
     opacity: 1,
     x: "0", // Slide to original position
     transition: {
-      duration: 0.6,
+      duration: 0.2,
       ease: "easeInOut",
-      staggerChildren: 0.1, // Stagger forward
-      delayChildren: 0.2,
+      staggerChildren: 0.01, // Stagger forward
+      delayChildren: 0.01,
     },
   },
   exit: {
     opacity: 0,
-    x: "-100%", // Slide out to left
+    x: "-100%", // Slide from left
     transition: {
-      delay: 2,
-      duration: 0.6,
+      duration: 0.2,
       ease: "easeInOut",
-      staggerChildren: 0.1, // Reverse stagger
+      staggerChildren: 0.01, // Reverse stagger
       staggerDirection: -1, // Reverse order of staggering
     },
   },
@@ -65,15 +64,15 @@ const listItemVariants = {
     opacity: 1,
     x: "0",
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: "easeInOut",
     },
   },
   exit: {
-    opacity: 0,
+    opacity: 1,
     x: "-50%",
     transition: {
-      duration: 0.2,
+      duration: 0.02,
       ease: "easeInOut",
     },
   },
@@ -108,17 +107,11 @@ export default function WorkNav({
 
   return (
     <SWorkNav
-      variants={containerVariants}
+      variants={categoryVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
-      <motion.dl
-        variants={categoryVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
         {works.map((category) => (
           <>
             <motion.dt key={category.category} variants={listItemVariants}>
@@ -154,24 +147,35 @@ export default function WorkNav({
             ))}
           </>
         ))}
-      </motion.dl>
     </SWorkNav>
   );
 }
 
-const SWorkNav = styled(motion.div)`
-  width: ${styles.measurements.workNavWidth}px;
+const SWorkNav = styled(motion.dl)`
+  width: ${styles.measurements.desktop.workNavWidth}px;
   position: fixed;
-  left: ${styles.measurements.desktopMargin}px;
-  top: 100px;
-  padding-right: ${styles.measurements.desktopMargin}px;
+  left: ${styles.measurements.desktop.margin}px;
+  top: 80px;
+  padding-right: ${styles.measurements.desktop.margin}px;
   z-index: 1000;
   font-size: 0.9em;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  display: none;
+  @media (min-width: ${styles.breakpoints.large}px) {
+    display: block;
+  }
   dt {
     font-weight: 700;
     padding-top: 20px;
     display: block;
     line-height: 160%;
+  }
+  dt:first-child {
+    padding-top: ${styles.measurements.desktop.margin}px;
+  }
+  dd:last-child {
+    margin-bottom: ${styles.measurements.desktop.margin}px;
   }
 `;
 

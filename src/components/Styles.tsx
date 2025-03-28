@@ -12,8 +12,21 @@ export const styles: TStyles = {
     active: "rgb(0, 112, 243)",
   },
   measurements: {
-    workNavWidth: 300,
-    desktopMargin: 32,
+    desktop: {
+      workNavWidth: 300,
+      margin: 32,
+      headerHeight: 80,
+    },
+    mobile: {
+      margin: 16,
+      headerHeight: 50,
+    }
+  },
+  breakpoints: {
+    small: 521,
+    medium: 769,
+    large: 1025,
+    xLarge: 1301,
   }
 }
 
@@ -56,10 +69,6 @@ export const SGlobal = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-  html, body {
-    height: 100%;
   }
 
   .header-bar {

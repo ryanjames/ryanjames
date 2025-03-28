@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import WorkNav from "../components/WorkNav";
 import works from "../data/works";
@@ -6,10 +7,9 @@ import styled from "styled-components";
 import { styles } from "../components/Styles";
 import { useRef, useEffect, memo } from "react";
 import { throttle } from "lodash"; // Throttling function
+import type { TWork } from "../types";
 
 const Work = function Work() {
-  console.log("Rendering Work Component");
-
   const location = useLocation();
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const activeSectionRef = useRef<string>("");
@@ -48,7 +48,7 @@ const Work = function Work() {
     Object.entries(sectionsRef.current).forEach(([id, section]) => {
       if (section) {
         const sectionRect = section.getBoundingClientRect();
-        if (sectionRect.top <= 200 && sectionRect.bottom > 0) {
+        if (sectionRect.top <= 0 && sectionRect.bottom > 0) {
           currentSection = id;
         }
       }
@@ -69,7 +69,7 @@ const Work = function Work() {
   }, []);
 
   // Memoized component for individual work items
-  const Item = memo(({ item }: { item: any }) => {
+  const Work = memo(({ item, category }: { item: TWork, category: string }) => {
     return (
       <SWork
         key={item.slug}
@@ -78,15 +78,22 @@ const Work = function Work() {
           if (el) sectionsRef.current[item.slug] = el;
         }}
       >
-        <SDescription>
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </SDescription>
-        <SImage>
-          {item.images.map((image: any) => (
-            <img key={image.src} src={image.src} alt={`${image.alt}`} />
-          ))}
-        </SImage>
+        <SWorkInner>
+          <SDescription>
+            <h2>{item.title}</h2>
+            {item.category ? (
+              <SCategory>{item.category}</SCategory>
+            ) : (
+              <SCategory>{category}</SCategory>
+            )}
+            <p>{item.description}</p>
+          </SDescription>
+          <SImage>
+            {item.images.map((image: any) => (
+              <img key={image.src} src={image.src} alt={`${image.alt}`} />
+            ))}
+          </SImage>
+        </SWorkInner>
       </SWork>
     );
   });
@@ -97,12 +104,18 @@ const Work = function Work() {
         <WorkNav works={works} scrollToSection={scrollToSection} />,
         document.body
       )}
-      <SWorks>
-        {works
-          .flatMap((category) => category.items)
-          .map((work) => (
-            <Item item={work} key={work.slug} />
-          ))}
+      <SWorks
+        key="works"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        {works.map((category) =>
+          category.items.map((work) => (
+            <Work item={work} category={category.category} key={work.slug} />
+          ))
+        )}
       </SWorks>
     </>
   );
@@ -111,9 +124,24 @@ const Work = function Work() {
 export default Work;
 
 const SWork = styled.div`
+  &:first-child > div {
+    border-top: 0;
+  }
+  padding-top: 40px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    padding-top: 79px;
+  }
+`;
+
+const SWorkInner = styled.div`
   display: flex;
-  flex-direction: row;
-  padding-top: 120px;
+  flex-direction: column;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    border-top: 1px solid ${styles.colors.black};
+  }
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
+    flex-direction: row;
+  }
 `;
 
 const SImage = styled.div`
@@ -126,22 +154,59 @@ const SImage = styled.div`
   }
 `;
 
-const SDescription = styled.div`
-  width: 300px;
-  padding-right: 40px;
-  h2 {
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 0.1em;
-  }
-  p {
-    font-size: 1rem;
+const SCategory = styled.span`
+  font-family: ${styles.type.mono};
+  text-transform: uppercase;
+  font-size: 0.8em;
+  margin-bottom: 0.6em;
+  display: block;
+  @media (min-width: ${styles.breakpoints.large}px) {
+    display: none;
   }
 `;
 
-const SWorks = styled.div`
-  margin-left: ${styles.measurements.workNavWidth +
-  styles.measurements.desktopMargin * 2}px;
-  padding-right: ${styles.measurements.desktopMargin}px;
+const SDescription = styled.div`
+  padding-top: 30px;
+  padding-bottom: 24px;
+  padding-left: ${styles.measurements.mobile.margin}px;
+  padding-right: ${styles.measurements.mobile.margin}px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
+    width: 300px;
+    padding-right: 40px;
+    padding-bottom: 0;
+  }
+  h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+    line-height: 110%;
+    margin-bottom: 0.4em;
+  }
+  p {
+    font-size: 0.9em;
+  }
+  @media (min-width: ${styles.breakpoints.medium}px) {
+    h2 {
+      font-size: 1.5em;
+    }
+    p {
+      font-size: 1em;
+    }
+  }
+`;
+
+const SWorks = styled(motion.div)`
+  @media (min-width: ${styles.breakpoints.small}px) {
+    padding-left: ${styles.measurements.desktop.margin}px;
+    padding-right: ${styles.measurements.desktop.margin}px;
+  }
+  @media (min-width: ${styles.breakpoints.large}px) {
+    padding-left: 0;
+    margin-left: ${styles.measurements.desktop.workNavWidth +
+    styles.measurements.desktop.margin * 2}px;
+  }
   padding-bottom: 40vh;
 `;
