@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { SGlobal } from "./Styles";
 
 import Header from "./Header";
