@@ -4,6 +4,7 @@ import { styles } from "../components/Styles";
 import { heroVariants } from "../animations";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
+import clients from "../data/clients";
 
 export default function About() {
 
@@ -22,33 +23,73 @@ export default function About() {
         <meta name="description" content="Ryan James - About" />
       </Helmet>
       <SContent>
-        <motion.p
-          variants={heroVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          <p>
-            Whether designing intuitive user experiences, building comprehensive
-            design systems, diving deep into the code, defining the archetypes
-            of a brand, or bringing other artists' visions to life, Ryan James
-            brings a thoughtful, joyful, adaptable approach to every project.
-          </p>
-          <p>
-            Known for his versatility and curiosity, he has worked with small
-            agile teams and large structured organizations, seamlessly adapting
-            to different challenges. With experience in leadership roles, Ryan
-            combines strategic thinking with hands-on execution, ensuring that
-            the projects he's involved with are both innovative and effective.
-          </p>
-        </motion.p>
+        <SContentInner>
+          <motion.div
+            variants={heroVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <p>
+              Whether designing intuitive user experiences, building comprehensive
+              design systems, diving deep into the code, defining the archetypes
+              of a brand, or bringing other artists' visions to life, Ryan James
+              brings a thoughtful, joyful, adaptable approach to every project.
+            </p>
+            <p>
+              Known for his versatility and curiosity, he has worked with small
+              agile teams and large structured organizations, seamlessly adapting
+              to different challenges. With experience in leadership roles, Ryan
+              combines strategic thinking with hands-on execution, ensuring that
+              the projects he's involved with are both innovative and effective.
+            </p>
+            <br />
+            <h3>Partial Client List:</h3>
+            <SClients>
+              {clients.map((client) => (
+                <img src={`/client-logos/${client.logo}`} />
+              ))}
+            </SClients>
+          </motion.div>
+        </SContentInner>
       </SContent>
-      <img src="/images/ryan-james.jpg" alt="Ryan James" />
+      <img className="background-portrait" src="/images/ryan-james.jpg" alt="Ryan James" />
     </SAbout>
   );
 }
 
+const SClients = styled.div`
+  opacity: 1;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 120px;
+  > img {
+    margin-top: -12px;
+    height: 36px;
+    width: auto;
+  }
+  @media (min-width: ${styles.breakpoints.small}px) {
+    gap: 32px;
+    opacity: 0.6;
+  }
+`
+
 const SContent = styled.div`
+  position: absolute;
+  top: ${styles.measurements.mobile.headerHeight}px;
+  padding-top: 40px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    top: ${styles.measurements.desktop.headerHeight}px;
+  }
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  z-index: 2;
+`;
+
+const SContentInner = styled.div`
   position: relative;
   z-index: 2;
   padding-left: ${styles.measurements.desktop.margin}px;
@@ -73,6 +114,14 @@ const SContent = styled.div`
     font-weight: 300;
     margin-bottom: 1.5em;
   }
+  h3 {
+    font-family: ${styles.type.mono};
+    text-transform: uppercase;
+    font-size: 14px;
+    display: block;
+    padding-bottom: 18px;
+    letter-spacing: 0.2em;
+  }
 `;
 
 const SAbout = styled(motion.div)`
@@ -85,7 +134,7 @@ const SAbout = styled(motion.div)`
   padding-top: 80px;
   left: 0;
   bottom: 0;
-  img {
+  .background-portrait {
     position: absolute;
     height: 100%;
     z-index: 1;
