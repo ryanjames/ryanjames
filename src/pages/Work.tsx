@@ -192,6 +192,12 @@ const SDescription = styled.div`
   padding-top: 30px;
   padding-left: ${styles.measurements.mobile.margin}px;
   padding-right: ${styles.measurements.mobile.margin}px;
+  .description {
+    display: none;
+    @media (min-width: ${styles.breakpoints.xLarge}px) {
+      display: block;
+    }
+  }
   a {
     color: ${styles.colors.active} !important;
   }
