@@ -9,7 +9,7 @@ const works: TWorks = [
         slug: "san-francisco-standard",
         category: "Branding",
         description:
-          "",
+          "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
         images: [
           {
             src: "/images/sf-standard-1.jpg",
@@ -45,8 +45,8 @@ const works: TWorks = [
         title: "Betteromics",
         slug: "betteromics-product-design",
         category: "Product Design",
-        description:
-          "",
+        description: `Betteromics was an innovative software development company whose mission was to help scientists and researchers in the biotech space accellerate their work by leveraging AI/ML. 
+          I was a product designer and front-end developer here (with a stint as the sole designer). I managed design systems, conributed to developing component libraries, and occasionally took the lead in building out entire interfaces in React.`,
         images: [
           {
             src: "/images/betteromics-product-design-8.jpg",
@@ -83,7 +83,7 @@ const works: TWorks = [
         slug: "twist",
         category: "Product Design",
         description:
-          "",
+          "Twist Bioscience manufactures synthetic DNA and DNA products for customers in a wide range of industries. Through Betteromics I led the design and assisted in the development of a tool to help Twist customers order libraries of synthetic DNA.",
         images: [
           {
             src: "/images/twist-product-design-1.jpg",
@@ -99,7 +99,8 @@ const works: TWorks = [
         title: "Figment.io",
         slug: "figment",
         category: "Branding",
-        description: "",
+        description:
+          "Figment is a leading crypto staking platform designed for institutions with over $15 billion in assets staked through their platform. I worked with them to establish a brand and developed a website for their initial launch using Gatsby and DatoCMS.",
         images: [
           {
             src: "/images/figment-1.jpg",
@@ -135,7 +136,8 @@ const works: TWorks = [
         title: "Chariot",
         slug: "chariot",
         category: "Branding",
-        description: "",
+        description:
+          "Chariot is a brand that creates ritual tools that support wellness on the go and help you stay connected to your inner compass. I established their brand, attempting to infuse a whimsical, carefree logotype and bold colors with a soft, natural baseline palette.",
         images: [
           {
             src: "/images/chariot-1.jpg",
@@ -175,7 +177,8 @@ const works: TWorks = [
         title: "Sufjan Stevens / AKR",
         slug: "sufjan-stevens-akr",
         category: "Graphic Design",
-        description: "",
+        description:
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
         images: [
           {
             src: "/images/sufjan-stevens-3.jpg",
@@ -220,7 +223,7 @@ const works: TWorks = [
         title: "Hourstack",
         slug: "hourstack",
         description:
-          "",
+          "Before Hourstack joined ClickUp, they tapped my shoulder to explore a bold new vision for their product.",
         images: [
           {
             src: "/images/hourstack-1.jpg",
@@ -231,8 +234,7 @@ const works: TWorks = [
       {
         title: "Innovationist",
         slug: "innovationist",
-        description:
-          "",
+        description: `Innovationist was a conceptual idea about gathering, managing, and organizing ideas in a graph-like architecture envisioned by <a href="https://www.joelfariss.com/" target="_blank">Joel Fariss.</a>. Think of it as bookmarking that's actually useful because it automated relationships between entities.`,
         images: [
           {
             src: "/images/innovationist-1.jpg",
@@ -244,7 +246,7 @@ const works: TWorks = [
         title: "Diff League",
         slug: "diff-league",
         description:
-          "",
+          "Diffleague is a concept for supercharging and simplifying sports betting at the same time. Along with establishing the brand, I envisioned the interface for the core product.",
         images: [
           {
             src: "/images/diffleague-1.jpg",
@@ -260,7 +262,7 @@ const works: TWorks = [
         title: "Luminator",
         slug: "luminator",
         description:
-          "",
+          "Luminator Technology Group delivers globally-recognized technology solutions that increase intelligence, safety, and efficiency for public transit operations. I designed several interfaces for internal operations, as well as touch-screen HVAC controls to be used onboard aircraft by the flight staff.",
         images: [
           {
             src: "/images/luminator-1.jpg",
@@ -272,7 +274,7 @@ const works: TWorks = [
         title: "Desiring God",
         slug: "desiring-god",
         description:
-          "",
+          "Desiring God is a non-profit organization in Minneapolis that was birthed out of the writings of John Piper, one of the leading theologians and ministers to come out of the Christian Reformed tradition in the west. I worked with the Desiring God team to design and develop their website, which hosts a database of thousands of resources and receives nearly 10 million page views per month.",
         images: [
           {
             src: "/images/desiring-god-1.jpg",
@@ -288,7 +290,8 @@ const works: TWorks = [
       {
         title: "Betteromics",
         slug: "betteromics-development",
-        description: "",
+        description:
+          "With Betteromics I designed and developed the interface for an AI/ML data labeling system to first abstract then structure large volumes of data for patients with complex conditions.",
         images: [
           {
             src: "/images/betteromics-development-1.jpg",
@@ -299,7 +302,8 @@ const works: TWorks = [
       {
         title: "Sanctus Audio",
         slug: "sanctus",
-        description: "",
+        description:
+          "Sanctus is a sound design studio out of Grand Rapids, Michigan. I designed and built their entire digital presence. The bulk of the work was in constructing a comprehensive sample library powered by my favorite relational database platform, Airtable.",
         images: [
           {
             src: "/images/sanctus-1.jpg",
@@ -318,7 +322,8 @@ const works: TWorks = [
       {
         title: "Bumbershoot",
         slug: "bumbershoot",
-        description: "",
+        description:
+          "Bumbershoot is a legendary music festival in Seattle that shut down for a few years during COVID. I came on board to build the relaunch of the website after several years of dormancy.",
         images: [
           {
             src: "/images/bumbershoot-1.jpg",
@@ -329,7 +334,8 @@ const works: TWorks = [
       {
         title: "PicoBrew",
         slug: "picobrew",
-        description: "",
+        description:
+          "PicoBrew was a company that was essentially trying to make a Keureg for homebrewers. I worked with them on numerous initiatives in both product design and front-end development, establishing a component library in Vue and building out their web tools for ordering and monitoring brews.",
         images: [
           {
             src: "/images/picobrew-1.jpg",
@@ -340,7 +346,8 @@ const works: TWorks = [
       {
         title: "Paper Crane Factory",
         slug: "paper-crane-factory",
-        description: "",
+        description:
+          "Out of the ashes of the legendary Seattle-based ad agency Wexley School for Girls, principal/creative director Cal McAllister launched Paper Crane Factory, and kept all of his experimental and gleefully irreverent advertising inclinations in tact. I've worked with PCF for a number of years on various development projects, both for their eccentric clients or for internal initiatives.",
         images: [
           {
             src: "/images/paper-crane-factory-1.jpg",
@@ -356,7 +363,8 @@ const works: TWorks = [
       {
         title: "Somn",
         slug: "somn",
-        description: "",
+        description:
+          "This is an exploration for Somn Labs, a team who has been working on a comprehensive sleep assessment tool rooted in 50 years of research.",
         images: [
           {
             src: "/images/somn-1.jpg",
@@ -383,7 +391,8 @@ const works: TWorks = [
       {
         title: "Monorail",
         slug: "monorail",
-        description: "",
+        description:
+          "Monorail is a conceptual video commerce platform that connects enthusiasts with their favorite brands and retailers. Emphasizing luxury goods, Monorail required a logo that showed strength, stability, and movement.",
         images: [
           {
             src: "/images/monorail-1.jpg",
@@ -410,7 +419,8 @@ const works: TWorks = [
       {
         title: "Motherly",
         slug: "motherly",
-        description: "",
+        description:
+          "Motherly Inc. is a lifestyle brand that was born to send expert ideas and mom-to-mom inspiration to women exactly when they need it. I worked with the co-founders to established their brand for the initial launch.",
         images: [
           {
             src: "/images/motherly-1.jpg",
@@ -437,7 +447,8 @@ const works: TWorks = [
       {
         title: "Itel International",
         slug: "itel",
-        description: "",
+        description:
+          "Itel considers themselves master architects of authentic, on-brand experiences that help their customers stand out in today’s highly competitive experience economy. Headquartered in Jamaica, I was hired to rebrand their business (formerly Itel BPO) as they veered into international operations.",
         images: [
           {
             src: "/images/itel-1.jpg",
@@ -464,7 +475,8 @@ const works: TWorks = [
       {
         title: "nPower",
         slug: "n-power",
-        description: "",
+        description:
+          "nPower is a startup in the biotech space whose mission is to significantly accelerate clinical trials for new medicines.",
         images: [
           {
             src: "/images/npower-1.jpg",
@@ -489,9 +501,10 @@ const works: TWorks = [
         ],
       },
       {
-        title: "Wave Neuro",
+        title: "Wave Neuroscience",
         slug: "wave-neuro",
-        description: "",
+        description:
+          "Wave Neuroscience is on a mission to develop technologies that bring medical grade precision to mental health treatment. I partnered with Prota Labs to explore their initial brand.",
         images: [
           {
             src: "/images/wave-neuro-1.jpg",
@@ -518,7 +531,8 @@ const works: TWorks = [
       {
         title: "Diff League",
         slug: "diff-league-branding",
-        description: "",
+        description:
+          "Diffleague is a concept for supercharging and simplifying sports betting at the same time. Along with establishing the brand, I envisioned the interface for the core product.",
         images: [
           {
             src: "/images/diffleague-brand-1.jpg",
@@ -533,7 +547,8 @@ const works: TWorks = [
       {
         title: "Holy Ground",
         slug: "holy-ground",
-        description: "",
+        description:
+          "Holy Ground's aim is to connect soulful, talented Christian scholars with Christian theological questions that are asked by everyday people. I developed a brand that is primarily steeped in traditional Christian motifs to provide a sense of trust and history.",
         images: [
           {
             src: "/images/holy-ground-1.jpg",
@@ -549,7 +564,8 @@ const works: TWorks = [
       {
         title: "The Classic Crime",
         slug: "the-classic-crime",
-        description: "",
+        description:
+          "What Was Done, Vol. 1: A Decade Revisited is an album of acoustic revisitations of songs by Tooth and Nail alums the Classic Crime. Matt MacDonald hired me to design the album's artwork.",
         images: [
           {
             src: "/images/the-classic-crime-1.jpg",
@@ -576,7 +592,8 @@ const works: TWorks = [
       {
         title: "Pacific Gold",
         slug: "pacific-gold",
-        description: "",
+        description:
+          "Sing My Welcome Home is the first and only studio album by Seattle folk rock group Pacific Gold, and is a collection of songs dirived from traditional Christian liturgy and writings. I incorporated the incredible paintings of Hieronymus Bosch, which beautifully represented the folkish spirituality of the music.",
         images: [
           {
             src: "/images/pacific-gold-1.jpg",
@@ -603,7 +620,8 @@ const works: TWorks = [
       {
         title: "Jessica Gallo",
         slug: "jessica-gallo",
-        description: "",
+        description:
+          "Jessica Gallo is an extraordinary harpist from Seattle, Washington. I designed her album Walk to the Sun, using washes of yellow and purple and an ethereal composition to represent her delicate, enchanting music.",
         images: [
           {
             src: "/images/jessica-gallo-1.jpg",
@@ -622,7 +640,8 @@ const works: TWorks = [
       {
         title: "Lowercase Noises",
         slug: "lowercase-noises",
-        description: "",
+        description:
+          "Lowercase Noises is Andy Othling, an ambient/instrumental music producer from Albuquerque, New Mexico. The Swiss Illness is a beautifully realized album with nods to Stars of the Lid and Sigur Ros' more ambient explorations.",
         images: [
           {
             src: "/images/lowercase-noises-1.jpg",
