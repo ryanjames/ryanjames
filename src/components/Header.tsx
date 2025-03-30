@@ -47,8 +47,7 @@ export default function Header() {
   }, []);
 
   return (
-    <SHeader
-    >
+    <SHeader>
       <SHeaderInner>
         <SLogo to="/">
           {displayedText.map((char, index) => (
@@ -68,7 +67,7 @@ export default function Header() {
           transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
         >
           <StyledNavLink
-            to="/work"
+            to="/work#san-francisco-standard"
             $active={location.pathname.startsWith("/work")}
           >
             Work

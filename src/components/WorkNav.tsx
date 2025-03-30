@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { TWorks } from "../types";
@@ -113,8 +114,8 @@ export default function WorkNav({
       exit="exit"
     >
         {works.map((category) => (
-          <>
-            <motion.dt key={category.category} variants={listItemVariants}>
+          <React.Fragment key={category.category}>
+            <motion.dt  variants={listItemVariants}>
               {category.category}
             </motion.dt>
             {category.items.map((work) => (
@@ -145,7 +146,7 @@ export default function WorkNav({
                 )}
               </motion.dd>
             ))}
-          </>
+          </React.Fragment>
         ))}
     </SWorkNav>
   );
@@ -161,10 +162,7 @@ const SWorkNav = styled(motion.dl)`
   font-size: 0.9em;
   height: calc(100vh - 80px);
   overflow-y: scroll;
-  display: none;
-  @media (min-width: ${styles.breakpoints.large}px) {
-    display: block;
-  }
+  display: block;
   dt {
     font-weight: 700;
     padding-top: 20px;

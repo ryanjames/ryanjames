@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import WorkNav from "../components/WorkNav";
 import works from "../data/works";
@@ -9,11 +10,16 @@ import { styles } from "../components/Styles";
 import { useRef, useEffect, memo } from "react";
 import { throttle } from "lodash"; // Throttling function
 import type { TWork } from "../types";
+import WorkSelect from "../components/WorkSelect";
 
 const Work = function Work() {
   const location = useLocation();
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const activeSectionRef = useRef<string>("");
+  const [isSelectNav, setIsSelectNav] = useState(
+    window.innerWidth < styles.breakpoints.xLarge
+  );
+
   const navigate = useNavigate();
 
   // Function to scroll to a section manually when hash changes
@@ -24,6 +30,14 @@ const Work = function Work() {
       });
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSelectNav(window.innerWidth < styles.breakpoints.xLarge);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Only update when hash actually changes (avoid unnecessary state updates)
   useEffect(() => {
@@ -36,20 +50,14 @@ const Work = function Work() {
     }
   }, [location.hash]); // Effect runs only when location.hash changes
 
-  useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if(!hash) {
-      navigate(`/work#${works[0].items[0].slug}`, { replace: true });
-    }
-  }, [])
-
   // Intersection observer to detect which section is currently in view
   const handleScroll = throttle(() => {
     let currentSection = "";
+    const offset = window.innerWidth <= 1300 ? 140 : 120; // Adjust threshold dynamically
     Object.entries(sectionsRef.current).forEach(([id, section]) => {
       if (section) {
         const sectionRect = section.getBoundingClientRect();
-        if (sectionRect.top <= 120 && sectionRect.bottom > 0) {
+        if (sectionRect.top <= offset && sectionRect.bottom > 0) {
           currentSection = id;
         }
       }
@@ -106,7 +114,13 @@ const Work = function Work() {
         <meta name="description" content="Ryan James - Work" />
       </Helmet>
       {createPortal(
-        <WorkNav works={works} scrollToSection={scrollToSection} />,
+        isSelectNav ? (
+          <SWorkSelect>
+            <WorkSelect works={works} scrollToSection={scrollToSection} />
+          </SWorkSelect>
+        ) : (
+          <WorkNav works={works} scrollToSection={scrollToSection} />
+        ),
         document.body
       )}
       <SWorks
@@ -132,20 +146,37 @@ const SWork = styled.div`
   scroll-margin: 78px;
 `;
 
+const SWorkSelect = styled.div`
+  display: block;
+  position: fixed;
+  top: ${styles.measurements.mobile.headerHeight - 2}px;
+  width: 100%;
+  z-index: 1000;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    top: ${styles.measurements.desktop.headerHeight - 2}px;
+  }
+  @media (min-width: ${styles.breakpoints.large}px) {
+    width: auto;
+    left: 50%;
+    margin-left: -250px;
+    top: 28px;
+  }
+`;
+
 const SWorkInner = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 40px;
 
   @media (min-width: ${styles.breakpoints.small}px) {
-    margin-top: 79px;
+    margin-top: 69px;
   }
 
   @media (min-width: ${styles.breakpoints.small}px) {
     border-top: 1px solid ${styles.colors.black};
   }
 
-  @media (min-width: ${styles.breakpoints.xLarge}px) {
+  @media (min-width: ${styles.breakpoints.large}px) {
     flex-direction: row;
     align-items: flex-start; /* Ensures SDescription and SImage align properly */
   }
@@ -153,7 +184,7 @@ const SWorkInner = styled.div`
 
 const SImage = styled.div`
   flex: 1;
-  padding-top: 40px;
+  padding-top: 38px;
   img {
     width: 100%;
     height: auto;
@@ -170,49 +201,49 @@ const SCategory = styled.span`
   font-family: ${styles.type.mono};
   text-transform: uppercase;
   font-size: 0.8em;
-  display: block;
   margin-bottom: 0.85em;
+  display: block;
   @media (min-width: ${styles.breakpoints.xLarge}px) {
     margin-bottom: 0.6em;
   }
 `;
 
 const SDescription = styled.div`
-  position: sticky;
-  align-self: flex-start;
-  max-height: 80vh;
-  overflow-y: auto;
-  display: flex;
-  align-items: flex-end;
-  gap: 20px;
-  width: 100%;
-  background-color: ${styles.colors.white};
-  z-index: 2;
-  top: 40px;
-  padding-top: 30px;
-  padding-left: ${styles.measurements.mobile.margin}px;
-  padding-right: ${styles.measurements.mobile.margin}px;
+  display: none;
+  @media (min-width: ${styles.breakpoints.large}px) {
+    position: sticky;
+    align-self: flex-start;
+    max-height: 80vh;
+    overflow-y: auto;
+    gap: 20px;
+    width: 100%;
+    background-color: ${styles.colors.white};
+    z-index: 2;
+    padding-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    top: 76px;
+    width: 300px;
+    padding-right: 40px;
+    padding-bottom: 0;
+  }
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
+    top: 80px;
+  }
   .description {
     display: none;
-    @media (min-width: ${styles.breakpoints.xLarge}px) {
+    padding-left: 9px;
+    @media (min-width: ${styles.breakpoints.large}px) {
+      padding-left: 0;
       display: block;
+    }
+    @media (min-width: ${styles.breakpoints.xLarge}px) {
+      padding-left: 0;
     }
   }
   a {
     color: ${styles.colors.active} !important;
-  }
-  @media (min-width: ${styles.breakpoints.small}px) {
-    top: 60px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  @media (min-width: ${styles.breakpoints.xLarge}px) {
-    display: block;
-    padding-bottom: 24px;
-    top: 100px;
-    width: 300px;
-    padding-right: 40px;
-    padding-bottom: 0;
   }
 
   h2 {
@@ -220,8 +251,11 @@ const SDescription = styled.div`
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 0.4em;
+    display: block;
+    @media (min-width: ${styles.breakpoints.xLarge}px) {
+      display: block;
+    }
   }
-
   p {
     font-size: 0.9em;
   }
@@ -230,7 +264,6 @@ const SDescription = styled.div`
     h2 {
       font-size: 1.5em;
     }
-
     p {
       font-size: 1em;
     }
@@ -242,7 +275,7 @@ const SWorks = styled(motion.div)`
     padding-left: ${styles.measurements.desktop.margin}px;
     padding-right: ${styles.measurements.desktop.margin}px;
   }
-  @media (min-width: ${styles.breakpoints.large}px) {
+  @media (min-width: ${styles.breakpoints.xLarge}px) {
     padding-left: 0;
     margin-left: ${styles.measurements.desktop.workNavWidth +
     styles.measurements.desktop.margin * 2}px;

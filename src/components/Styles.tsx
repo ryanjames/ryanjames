@@ -25,7 +25,7 @@ export const styles: TStyles = {
   breakpoints: {
     small: 521,
     medium: 769,
-    large: 1025,
+    large: 961,
     xLarge: 1301,
   }
 }
