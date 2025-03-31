@@ -195,7 +195,7 @@ const SImage = styled.div`
     height: auto;
     display: block;
     border: 1px solid #ddd;
-    margin-bottom: -1px;
+    margin-bottom: 12px;
     @media (min-width: ${styles.breakpoints.medium}px) {
       margin-bottom: 40px;
     }
