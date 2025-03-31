@@ -19,7 +19,7 @@ export default function About() {
   return (
     <SAbout initial="initial" animate="animate" exit="exit">
       <Meta
-        title="About - Ryan James, Designer and Developer"
+        title="About - Ryan James"
         description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington."
       />
       <SContent>

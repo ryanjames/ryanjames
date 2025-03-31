@@ -119,7 +119,7 @@ const Work = function Work() {
   return (
     <>
       <Meta
-        title="Work - Ryan James, Designer and Developer"
+        title="Work - Ryan James"
         description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington."
       />
       {createPortal(
