@@ -43,6 +43,9 @@ export default function About() {
               combines strategic thinking with hands-on execution, ensuring that
               the projects he's involved with are both innovative and effective.
             </p>
+            <p>
+              <a href="ryan-james-resume-2025.pdf" target="_blank">Resume</a>
+            </p>
             <br />
             <h3>Partial Client List:</h3>
             <SClients>
@@ -121,6 +124,9 @@ const SContentInner = styled.div`
     display: block;
     padding-bottom: 18px;
     letter-spacing: 0.2em;
+  }
+  a, a:visited, a:active {
+    color: ${styles.colors.active};
   }
 `;
 
