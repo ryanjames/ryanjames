@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import LazyImage from "../components/LazyImage";
 import { useState } from "react";
 import WorkNav from "../components/WorkNav";
 import worksDesktop from "../data/works-desktop";
@@ -9,7 +10,7 @@ import styled from "styled-components";
 import { styles } from "../components/Styles";
 import { useRef, useEffect, memo } from "react";
 import { throttle } from "lodash"; // Throttling function
-import type { TWork } from "../types";
+import type { TWork, TWorkImage } from "../types";
 import Meta from "../components/Meta";
 import WorkSelect from "../components/WorkSelect";
 
@@ -82,35 +83,6 @@ const Work = function Work() {
     };
   }, []);
 
-  // Lazy Image Component
-const LazyImage = ({ src, alt }: { src: string, alt: string}) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // Stop observing after the image loads
-        }
-      },
-      { rootMargin: "100px" } // Load slightly before entering the viewport
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return isVisible ? (
-    <img ref={imgRef} src={src} alt={alt} loading="lazy" />
-  ) : (
-    <div ref={imgRef} style={{ minHeight: "200px", background: "#f0f0f0" }} />
-  );
-};
   // Memoized component for individual work items
   const Work = memo(({ item, category }: { item: TWork; category: string }) => {
     return (
@@ -135,8 +107,8 @@ const LazyImage = ({ src, alt }: { src: string, alt: string}) => {
             />
           </SDescription>
           <SImage>
-            {item.images.map((image: any) => (
-              <LazyImage key={image.src} src={image.src} alt={image.alt} />
+            {item.images.map((image: TWorkImage) => (
+              <LazyImage className="work-image" key={image.src} src={image.src} alt={image.alt} width={image.width} height={image.height} />
             ))}
           </SImage>
         </SWorkInner>
@@ -231,7 +203,7 @@ const SWorkInner = styled.div`
 const SImage = styled.div`
   flex: 1;
   padding-top: 38px;
-  img {
+  .work-image {
     width: 100%;
     height: auto;
     display: block;

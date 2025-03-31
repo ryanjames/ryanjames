@@ -1,12 +1,15 @@
+export type TWorkImage = {
+  src: string;
+  alt: string;
+  width: string;
+  height: string;
+}
 export type TWork = {
   title: string;
   slug: string;
   category?: string;
   description: string;
-  images: {
-    src: string;
-    alt: string;
-  }[];
+  images: TWorkImage[];
 };
 
 export type TWorks = {
