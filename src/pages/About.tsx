@@ -95,11 +95,12 @@ const SContent = styled.div`
 const SContentInner = styled.div`
   position: relative;
   z-index: 2;
-  padding-left: ${styles.measurements.desktop.margin}px;
   width: 90%;
   line-height: 120%;
   font-size: 1em;
+  padding-left: ${styles.measurements.mobile.margin}px;
   @media (min-width: ${styles.breakpoints.small}px) {
+    padding-left: calc(2vw + ${styles.measurements.desktop.margin}px);
     font-size: 1.3em;
   }
   @media (min-width: ${styles.breakpoints.medium}px) {
@@ -125,7 +126,9 @@ const SContentInner = styled.div`
     padding-bottom: 18px;
     letter-spacing: 0.2em;
   }
-  a, a:visited, a:active {
+  a,
+  a:visited,
+  a:active {
     color: ${styles.colors.active};
   }
 `;

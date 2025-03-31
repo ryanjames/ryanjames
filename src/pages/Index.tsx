@@ -46,6 +46,7 @@ const SHero = styled.div`
   font-size: 1.4em;
   @media (min-width: ${styles.breakpoints.small}px) {
     font-size: 1.6em;
+    padding-left: calc(2vw + ${styles.measurements.desktop.margin}px);
   }
   @media (min-width: ${styles.breakpoints.medium}px) {
     font-size: 2em;
