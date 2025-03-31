@@ -18,7 +18,7 @@ const Meta = ({
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://ryanjam.es/meta.jpg" />
+    <meta property="og:image" content="https://ryanjam.es/images/meta.jpg" />
     <meta property="og:url" content="https://ryanjam.es" />
 
     {/* Twitter Card */}
@@ -27,7 +27,7 @@ const Meta = ({
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://ryanjam.es/meta.jpg"
+      content="https://ryanjam.es/images/meta.jpg"
     />
     <meta name="twitter:site" content="@ryanrjames" />
 
