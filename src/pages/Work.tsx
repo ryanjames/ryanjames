@@ -149,7 +149,7 @@ const SWork = styled.div`
 const SWorkSelect = styled.div`
   display: block;
   position: fixed;
-  top: ${styles.measurements.mobile.headerHeight - 2}px;
+  top: ${styles.measurements.mobile.headerHeight + 12}px;
   width: 100%;
   z-index: 1000;
   @media (min-width: ${styles.breakpoints.small}px) {
