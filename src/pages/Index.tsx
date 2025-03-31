@@ -11,8 +11,8 @@ export default function Index() {
   return (
     <SHero>
       <Helmet>
-        <title>Ryan James - Designer and Developer</title>
-        <meta name="description" content="Ryan James - Designer and Developer" />
+        <title>Ryan James, Designer and Developer</title>
+        <meta name="description" content="Ryan James, Designer and Developer" />
       </Helmet>
       <motion.div
         variants={heroVariants}
