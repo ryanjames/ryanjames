@@ -7,7 +7,35 @@ import Meta from "../components/Meta";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<Meta title="Ryan James, Designer and Developer" description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+		<title>Ryan James, Designer and Developer</title>
+
+    <meta name="description" content="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+    <meta name="author" content="Ryan James" />
+    <meta name="robots" content="index, follow" />
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ryan James, Designer and Developer" />
+    <meta property="og:description" content="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+    <meta property="og:image" content="https://ryanjam.es/images/meta.jpg" />
+    <meta property="og:url" content="https://ryanjam.es" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ryan James, Designer and Developer" />
+    <meta name="twitter:description" content="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+    <meta
+      name="twitter:image"
+      content="https://ryanjam.es/images/meta.jpg"
+    />
+    <meta name="twitter:site" content="@ryanrjames" />
+
+    {/* Favicon */}
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+
+    {/* Canonical URL */}
+		<link rel="canonical" href="https://ryanjam.es" />
 	</head>
 	<body>
 		<slot />
