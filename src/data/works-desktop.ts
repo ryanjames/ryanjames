@@ -6,8 +6,8 @@ const works: TWorks = [
     items: [
       {
         title: "The San Francisco Standard",
-        slug: "san-francisco-standard",
         category: "Branding",
+        slug: "san-francisco-standard-featured",
         description:
           "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
         images: [
@@ -43,7 +43,7 @@ const works: TWorks = [
       },
       {
         title: "Betteromics",
-        slug: "betteromics-product-design",
+        slug: "betteromics-product-design-featured",
         category: "Product Design",
         description: `Betteromics was an innovative software development company whose mission was to help scientists and researchers in the biotech space accellerate their work by leveraging AI/ML. 
           I was a product designer and front-end developer here (with a stint as the sole designer). I managed design systems, conributed to developing component libraries, and occasionally took the lead in building out entire interfaces in React.`,
@@ -79,103 +79,8 @@ const works: TWorks = [
         ],
       },
       {
-        title: "Twist Bioscience",
-        slug: "twist",
-        category: "Product Design",
-        description:
-          "Twist Bioscience manufactures synthetic DNA and DNA products for customers in a wide range of industries. Through Betteromics I led the design and assisted in the development of a tool to help Twist customers order libraries of synthetic DNA.",
-        images: [
-          {
-            src: "/images/twist-product-design-1.jpg",
-            alt: "Twist Product Design 1",
-          },
-          {
-            src: "/images/twist-product-design-2.jpg",
-            alt: "Twist Product Design 2",
-          },
-        ],
-      },
-      {
-        title: "Figment.io",
-        slug: "figment",
-        category: "Branding",
-        description:
-          "Figment is a leading crypto staking platform designed for institutions with over $15 billion in assets staked through their platform. I worked with them to establish a brand and developed a website for their initial launch using Gatsby and DatoCMS.",
-        images: [
-          {
-            src: "/images/figment-1.jpg",
-            alt: "Figment Branding 1",
-          },
-          {
-            src: "/images/figment-2.jpg",
-            alt: "Figment Branding 2",
-          },
-          {
-            src: "/images/figment-3.jpg",
-            alt: "Figment Branding 3",
-          },
-          {
-            src: "/images/figment-4.jpg",
-            alt: "Figment Branding 4",
-          },
-          {
-            src: "/images/figment-5.jpg",
-            alt: "Figment Branding 5",
-          },
-          {
-            src: "/images/figment-6.jpg",
-            alt: "Figment Branding 6",
-          },
-          {
-            src: "/images/figment-7.jpg",
-            alt: "Figment Branding 7",
-          },
-        ],
-      },
-      {
-        title: "Chariot",
-        slug: "chariot",
-        category: "Branding",
-        description:
-          "Chariot is a brand that creates ritual tools that support wellness on the go and help you stay connected to your inner compass. I established their brand, attempting to infuse a whimsical, carefree logotype and bold colors with a soft, natural baseline palette.",
-        images: [
-          {
-            src: "/images/chariot-1.jpg",
-            alt: "Chariot Branding 1",
-          },
-          {
-            src: "/images/chariot-2.jpg",
-            alt: "Chariot Branding 2",
-          },
-          {
-            src: "/images/chariot-3.jpg",
-            alt: "Chariot Branding 3",
-          },
-          {
-            src: "/images/chariot-4.jpg",
-            alt: "Chariot Branding 4",
-          },
-          {
-            src: "/images/chariot-5.jpg",
-            alt: "Chariot Branding 5",
-          },
-          {
-            src: "/images/chariot-6.jpg",
-            alt: "Chariot Branding 6",
-          },
-          {
-            src: "/images/chariot-7.jpg",
-            alt: "Chariot Branding 7",
-          },
-          {
-            src: "/images/chariot-8.jpg",
-            alt: "Chariot Branding 8",
-          },
-        ],
-      },
-      {
         title: "Sufjan Stevens / AKR",
-        slug: "sufjan-stevens-akr",
+        slug: "sufjan-stevens-akr-featured",
         category: "Graphic Design",
         description:
           "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
@@ -219,6 +124,58 @@ const works: TWorks = [
   {
     category: "Product Design",
     items: [
+      {
+        title: "Betteromics",
+        slug: "betteromics-product-design",
+        description: `Betteromics was an innovative software development company whose mission was to help scientists and researchers in the biotech space accellerate their work by leveraging AI/ML. 
+          I was a product designer and front-end developer here (with a stint as the sole designer). I managed design systems, conributed to developing component libraries, and occasionally took the lead in building out entire interfaces in React.`,
+        images: [
+          {
+            src: "/images/betteromics-product-design-8.jpg",
+            alt: "Betteromics Product Design 8",
+          },
+          {
+            src: "/images/betteromics-product-design-5.jpg",
+            alt: "Betteromics Product Design 5",
+          },
+          {
+            src: "/images/betteromics-product-design-4.jpg",
+            alt: "Betteromics Product Design 4",
+          },
+          {
+            src: "/images/betteromics-product-design-1.jpg",
+            alt: "Betteromics Product Design 1",
+          },
+          {
+            src: "/images/betteromics-product-design-2.jpg",
+            alt: "Betteromics Product Design 2",
+          },
+          {
+            src: "/images/betteromics-product-design-6.jpg",
+            alt: "Betteromics Product Design 6",
+          },
+          {
+            src: "/images/betteromics-product-design-7.jpg",
+            alt: "Betteromics Product Design 7",
+          },
+        ],
+      },
+      {
+        title: "Twist Bioscience",
+        slug: "twist",
+        description:
+          "Twist Bioscience manufactures synthetic DNA and DNA products for customers in a wide range of industries. Through Betteromics I led the design and assisted in the development of a tool to help Twist customers order libraries of synthetic DNA.",
+        images: [
+          {
+            src: "/images/twist-product-design-1.jpg",
+            alt: "Twist Product Design 1",
+          },
+          {
+            src: "/images/twist-product-design-2.jpg",
+            alt: "Twist Product Design 2",
+          },
+        ],
+      },
       {
         title: "Hourstack",
         slug: "hourstack",
@@ -327,7 +284,7 @@ const works: TWorks = [
         images: [
           {
             src: "/images/bumbershoot-1.jpg",
-            alt: "Case Study 4 Image 1",
+            alt: "Bumbershoot 1",
           },
         ],
       },
@@ -351,7 +308,7 @@ const works: TWorks = [
         images: [
           {
             src: "/images/paper-crane-factory-1.jpg",
-            alt: "Case Study 4 Image 1",
+            alt: "Paper Crane Factory 1",
           },
         ],
       },
@@ -360,6 +317,118 @@ const works: TWorks = [
   {
     category: "Branding",
     items: [
+      {
+        title: "The San Francisco Standard",
+        slug: "san-francisco-standard",
+        description:
+          "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
+        images: [
+          {
+            src: "/images/sf-standard-1.jpg",
+            alt: "The San Francisco Standard 1",
+          },
+          {
+            src: "/images/sf-standard-2.jpg",
+            alt: "The San Francisco Standard 2",
+          },
+          {
+            src: "/images/sf-standard-3.jpg",
+            alt: "The San Francisco Standard 3",
+          },
+          {
+            src: "/images/sf-standard-4.jpg",
+            alt: "The San Francisco Standard 4",
+          },
+          {
+            src: "/images/sf-standard-5.jpg",
+            alt: "The San Francisco Standard 5",
+          },
+          {
+            src: "/images/sf-standard-6.jpg",
+            alt: "The San Francisco Standard 6",
+          },
+          {
+            src: "/images/sf-standard-7.jpg",
+            alt: "The San Francisco Standard 7",
+          },
+        ],
+      },
+      {
+        title: "Figment.io",
+        slug: "figment",
+        description:
+          "Figment is a leading crypto staking platform designed for institutions with over $15 billion in assets staked through their platform. I worked with them to establish a brand and developed a website for their initial launch using Gatsby and DatoCMS.",
+        images: [
+          {
+            src: "/images/figment-1.jpg",
+            alt: "Figment Branding 1",
+          },
+          {
+            src: "/images/figment-2.jpg",
+            alt: "Figment Branding 2",
+          },
+          {
+            src: "/images/figment-3.jpg",
+            alt: "Figment Branding 3",
+          },
+          {
+            src: "/images/figment-4.jpg",
+            alt: "Figment Branding 4",
+          },
+          {
+            src: "/images/figment-5.jpg",
+            alt: "Figment Branding 5",
+          },
+          {
+            src: "/images/figment-6.jpg",
+            alt: "Figment Branding 6",
+          },
+          {
+            src: "/images/figment-7.jpg",
+            alt: "Figment Branding 7",
+          },
+        ],
+      },
+      {
+        title: "Chariot",
+        slug: "chariot",
+        description:
+          "Chariot is a brand that creates ritual tools that support wellness on the go and help you stay connected to your inner compass. I established their brand, attempting to infuse a whimsical, carefree logotype and bold colors with a soft, natural baseline palette.",
+        images: [
+          {
+            src: "/images/chariot-1.jpg",
+            alt: "Chariot Branding 1",
+          },
+          {
+            src: "/images/chariot-2.jpg",
+            alt: "Chariot Branding 2",
+          },
+          {
+            src: "/images/chariot-3.jpg",
+            alt: "Chariot Branding 3",
+          },
+          {
+            src: "/images/chariot-4.jpg",
+            alt: "Chariot Branding 4",
+          },
+          {
+            src: "/images/chariot-5.jpg",
+            alt: "Chariot Branding 5",
+          },
+          {
+            src: "/images/chariot-6.jpg",
+            alt: "Chariot Branding 6",
+          },
+          {
+            src: "/images/chariot-7.jpg",
+            alt: "Chariot Branding 7",
+          },
+          {
+            src: "/images/chariot-8.jpg",
+            alt: "Chariot Branding 8",
+          },
+        ],
+      },
       {
         title: "Somn",
         slug: "somn",
@@ -561,6 +630,46 @@ const works: TWorks = [
   {
     category: "Graphic Design",
     items: [
+      {
+        title: "Sufjan Stevens / AKR",
+        slug: "sufjan-stevens-akr",
+        description:
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
+        images: [
+          {
+            src: "/images/sufjan-stevens-3.jpg",
+            alt: "Sufjan Stevens Graphic Design 3",
+          },
+          {
+            src: "/images/sufjan-stevens-4.jpg",
+            alt: "Sufjan Stevens Graphic Design 4",
+          },
+          {
+            src: "/images/sufjan-stevens-1.jpg",
+            alt: "Sufjan Stevens Graphic Design 1",
+          },
+          {
+            src: "/images/sufjan-stevens-2.jpg",
+            alt: "Sufjan Stevens Graphic Design 2",
+          },
+          {
+            src: "/images/sufjan-stevens-5.jpg",
+            alt: "Sufjan Stevens Graphic Design 5",
+          },
+          {
+            src: "/images/sufjan-stevens-6.jpg",
+            alt: "Sufjan Stevens Graphic Design 6",
+          },
+          {
+            src: "/images/sufjan-stevens-7.jpg",
+            alt: "Sufjan Stevens Graphic Design 7",
+          },
+          {
+            src: "/images/sufjan-stevens-8.jpg",
+            alt: "Sufjan Stevens Graphic Design 8",
+          },
+        ],
+      },
       {
         title: "The Classic Crime",
         slug: "the-classic-crime",

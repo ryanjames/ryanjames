@@ -4,7 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import WorkNav from "../components/WorkNav";
-import works from "../data/works";
+import worksDesktop from "../data/works-desktop";
+import worksMobile from "../data/works-mobile";
 import styled from "styled-components";
 import { styles } from "../components/Styles";
 import { useRef, useEffect, memo } from "react";
@@ -15,6 +16,9 @@ import WorkSelect from "../components/WorkSelect";
 const Work = function Work() {
   const location = useLocation();
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
+  const [works, setWorks] = useState(
+    window.innerWidth < 800 ? worksMobile : worksDesktop
+  );
   const activeSectionRef = useRef<string>("");
   const [isSelectNav, setIsSelectNav] = useState(
     window.innerWidth < styles.breakpoints.xLarge
@@ -33,6 +37,7 @@ const Work = function Work() {
 
   useEffect(() => {
     const handleResize = () => {
+      setWorks(window.innerWidth < 769 ? worksMobile : worksDesktop);
       setIsSelectNav(window.innerWidth < styles.breakpoints.xLarge);
     };
     window.addEventListener("resize", handleResize);
@@ -188,9 +193,12 @@ const SImage = styled.div`
   img {
     width: 100%;
     height: auto;
-    margin-bottom: 40px;
     display: block;
     border: 1px solid #ddd;
+    margin-bottom: -1px;
+    @media (min-width: ${styles.breakpoints.medium}px) {
+      margin-bottom: 40px;
+    }
     &:last-child {
       margin-bottom: 0;
     }
