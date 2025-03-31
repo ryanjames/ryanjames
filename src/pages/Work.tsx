@@ -232,12 +232,8 @@ const SCategory = styled.span`
 const SDescription = styled.div`
   padding-top: 24px;
   display: block;
-  padding-left: 24px;
-  padding-right: 24px;
-  @media (min-width: ${styles.breakpoints.small}px) {
-    padding-left: 9px;
-    padding-right: 9px;
-  }
+  padding-left: 9px;
+  padding-right: 9px;
   @media (min-width: ${styles.breakpoints.large}px) {
     position: sticky;
     align-self: flex-start;

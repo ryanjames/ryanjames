@@ -8,4 +8,7 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  server: {
+    host: true, // Will make it available on all interfaces
+  },
 });
