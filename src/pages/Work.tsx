@@ -289,6 +289,8 @@ const SDescription = styled.div`
 `;
 
 const SWorks = styled(motion.div)`
+  padding-left: ${styles.measurements.mobile.margin}px;
+  padding-right: ${styles.measurements.mobile.margin}px;
   @media (min-width: ${styles.breakpoints.small}px) {
     padding-left: ${styles.measurements.desktop.margin}px;
     padding-right: ${styles.measurements.desktop.margin}px;
