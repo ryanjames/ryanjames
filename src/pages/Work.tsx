@@ -82,8 +82,37 @@ const Work = function Work() {
     };
   }, []);
 
+  // Lazy Image Component
+const LazyImage = ({ src, alt }: { src: string, alt: string}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing after the image loads
+        }
+      },
+      { rootMargin: "100px" } // Load slightly before entering the viewport
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return isVisible ? (
+    <img ref={imgRef} src={src} alt={alt} loading="lazy" />
+  ) : (
+    <div ref={imgRef} style={{ minHeight: "200px", background: "#f0f0f0" }} />
+  );
+};
   // Memoized component for individual work items
-  const Work = memo(({ item, category }: { item: TWork, category: string }) => {
+  const Work = memo(({ item, category }: { item: TWork; category: string }) => {
     return (
       <SWork
         key={item.slug}
@@ -100,11 +129,14 @@ const Work = function Work() {
             ) : (
               <SCategory>{category}</SCategory>
             )}
-            <div className="description" dangerouslySetInnerHTML={{ __html: item.description }} />
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
           </SDescription>
           <SImage>
             {item.images.map((image: any) => (
-              <img key={image.src} src={image.src} alt={`${image.alt}`} />
+              <LazyImage key={image.src} src={image.src} alt={image.alt} />
             ))}
           </SImage>
         </SWorkInner>
@@ -148,7 +180,13 @@ const Work = function Work() {
 export default Work;
 
 const SWork = styled.div`
-  scroll-margin: 78px;
+  scroll-margin: 32px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    scroll-margin: 56px;
+  }
+  @media (min-width: ${styles.breakpoints.large}px) {
+    scroll-margin: 68px;
+  }
 `;
 
 const SWorkSelect = styled.div`
@@ -182,6 +220,9 @@ const SWorkInner = styled.div`
   }
 
   @media (min-width: ${styles.breakpoints.large}px) {
+    &:first-child {
+      padding-top: 0;
+    }
     flex-direction: row;
     align-items: flex-start; /* Ensures SDescription and SImage align properly */
   }
@@ -236,13 +277,13 @@ const SDescription = styled.div`
     z-index: 2;
     padding-top: 30px;
     display: block;
-    top: 76px;
+    top: 80px;
     width: 300px;
     padding-right: 40px;
     padding-bottom: 0;
   }
   @media (min-width: ${styles.breakpoints.xLarge}px) {
-    top: 80px;
+    top: 84px;
   }
   a {
     color: ${styles.colors.active} !important;
