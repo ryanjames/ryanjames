@@ -24,14 +24,14 @@ const Work = function Work() {
     window.innerWidth < styles.breakpoints.xLarge
   );
 
-  const navigate = useNavigate();
-
   // Function to scroll to a section manually when hash changes
   const scrollToSection = (section: string) => {
     if (sectionsRef.current[section]) {
-      sectionsRef.current[section]?.scrollIntoView({
-        block: "start",
-      });
+      setTimeout(() => {
+        sectionsRef.current[section]?.scrollIntoView({
+          block: "start",
+        });
+      }, 300)
     }
   };
 
