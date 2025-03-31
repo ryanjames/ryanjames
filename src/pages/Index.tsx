@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { styles } from "../components/Styles";
 import {
   heroVariants,
@@ -10,10 +10,7 @@ import {
 export default function Index() {
   return (
     <SHero>
-      <Helmet>
-        <title>Ryan James, Designer and Developer</title>
-        <meta name="description" content="Ryan James, Designer and Developer" />
-      </Helmet>
+		  <Meta title="Ryan James, Designer and Developer" description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
       <motion.div
         variants={heroVariants}
         initial="initial"

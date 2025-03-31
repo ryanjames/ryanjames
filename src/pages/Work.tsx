@@ -2,7 +2,6 @@ import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
 import WorkNav from "../components/WorkNav";
 import worksDesktop from "../data/works-desktop";
 import worksMobile from "../data/works-mobile";
@@ -11,6 +10,7 @@ import { styles } from "../components/Styles";
 import { useRef, useEffect, memo } from "react";
 import { throttle } from "lodash"; // Throttling function
 import type { TWork } from "../types";
+import Meta from "../components/Meta";
 import WorkSelect from "../components/WorkSelect";
 
 const Work = function Work() {
@@ -146,10 +146,10 @@ const LazyImage = ({ src, alt }: { src: string, alt: string}) => {
 
   return (
     <>
-      <Helmet>
-        <title>Ryan James - Work</title>
-        <meta name="description" content="Ryan James - Work" />
-      </Helmet>
+      <Meta
+        title="Work - Ryan James, Designer and Developer"
+        description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington."
+      />
       {createPortal(
         isSelectNav ? (
           <SWorkSelect>

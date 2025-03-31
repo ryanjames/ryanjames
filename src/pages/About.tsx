@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { styles } from "../components/Styles";
 import { heroVariants } from "../animations";
+import Meta from "../components/Meta";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import clients from "../data/clients";
 
 export default function About() {
@@ -18,10 +18,10 @@ export default function About() {
 
   return (
     <SAbout initial="initial" animate="animate" exit="exit">
-      <Helmet>
-        <title>Ryan James - About</title>
-        <meta name="description" content="Ryan James - About" />
-      </Helmet>
+      <Meta
+        title="About - Ryan James, Designer and Developer"
+        description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington."
+      />
       <SContent>
         <SContentInner>
           <motion.div
@@ -31,20 +31,24 @@ export default function About() {
             exit="exit"
           >
             <p>
-              Whether designing intuitive user experiences, building comprehensive
-              design systems, diving deep into the code, defining the archetypes
-              of a brand, or bringing other artists' visions to life, Ryan James
-              brings a thoughtful, joyful, adaptable approach to every project.
+              Whether designing intuitive user experiences, building
+              comprehensive design systems, diving deep into the code, defining
+              the archetypes of a brand, or bringing other artists' visions to
+              life, Ryan James brings a thoughtful, joyful, adaptable approach
+              to every project.
             </p>
             <p>
               Known for his versatility and curiosity, he has worked with small
-              agile teams and large structured organizations, seamlessly adapting
-              to different challenges. With experience in leadership roles, Ryan
-              combines strategic thinking with hands-on execution, ensuring that
-              the projects he's involved with are both innovative and effective.
+              agile teams and large structured organizations, seamlessly
+              adapting to different challenges. With experience in leadership
+              roles, Ryan combines strategic thinking with hands-on execution,
+              ensuring that the projects he's involved with are both innovative
+              and effective.
             </p>
             <p>
-              <a href="ryan-james-resume-2025.pdf" target="_blank">Resume</a>
+              <a href="ryan-james-resume-2025.pdf" target="_blank">
+                Resume
+              </a>
             </p>
             <br />
             <h3>Partial Client List:</h3>
@@ -56,7 +60,11 @@ export default function About() {
           </motion.div>
         </SContentInner>
       </SContent>
-      <img className="background-portrait" src="/images/ryan-james.jpg" alt="Ryan James" />
+      <img
+        className="background-portrait"
+        src="/images/ryan-james.jpg"
+        alt="Ryan James"
+      />
     </SAbout>
   );
 }
