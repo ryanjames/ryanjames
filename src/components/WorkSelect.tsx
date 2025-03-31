@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { styles } from "./Styles";
-import { useEffect, useState } from "react";
-import type { TWork, TWorks } from "../types";
+import type { TWorks } from "../types";
 // import { styles } from "./Styles";
 
 export default function WorkSelect({
@@ -16,6 +15,7 @@ export default function WorkSelect({
   const location = useLocation(); // Using React Router's location
   const [activeHash, setActiveHash] = useState(location.hash); // Track hash state
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDListElement>(null);
   const flatItems = works.flatMap((category) =>
     category.items.map((item) => ({ ...item, category: item.category || category.category }))
   );
@@ -24,6 +24,22 @@ export default function WorkSelect({
   const [selectedItem, setSelectedItem] = useState(
     flatItems.find((item) => `#${item.slug}` === activeHash) || null
   );
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Track hash change in URL manually using useEffect
   useEffect(() => {
@@ -49,7 +65,7 @@ export default function WorkSelect({
     <SWorkSelect>
       {selectedItem && (
         <>
-          <SSelectedWork>
+          <SSelectedWork className={isOpen ? "open" : "closed"}>
             <SSelectedWorkText onClick={() => setIsOpen(!isOpen)}>
               <strong>{selectedItem.title}</strong>
               <span>{selectedItem.category}</span>
@@ -70,7 +86,7 @@ export default function WorkSelect({
         </>
       )}
       {isOpen && (
-        <SWorkSelectOptions>
+        <SWorkSelectOptions ref={dropdownRef}>
           {works.map((category) => (
             <React.Fragment key={category.category}>
               <SWorkSelectCategory>{category.category}</SWorkSelectCategory>
@@ -125,6 +141,14 @@ const SSelectedWork = styled.div`
   gap: 8px;
   align-items: center;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+  &.open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
 `
 
 const SSelectedWorkText = styled.div`
@@ -163,11 +187,6 @@ const SSelectedWorkText = styled.div`
   }
 `;
 
-const SSelectedWorkDescription = styled.div`
-  padding-bottom: ${styles.measurements.mobile.margin}px;
-  font-size: 0.9em;
-`;
-
 const SWorkSelectOptions = styled.dl`
   border-radius: 4px;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.38);
@@ -203,18 +222,3 @@ const SWorkSelectCategory = styled.dt`
     padding-top: 0;
   }
 `
-
-const SSelectedWorkDescriptionToggle = styled.span`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: ${styles.type.mono};
-  font-size: 0.8em;
-  margin-bottom: 4px;
-  &:hover {
-    cursor: pointer;
-  }
-  @media (min-width: ${styles.breakpoints.large}px) {
-    display: none;
-  }
-`;
