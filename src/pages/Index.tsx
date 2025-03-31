@@ -10,7 +10,7 @@ import {
 export default function Index() {
   return (
     <SHero>
-		  <Meta title="Ryan James - Multidisciplinary designer and developer" description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+		  <Meta title="Ryan James - Designer and developer" description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
       <motion.div
         variants={heroVariants}
         initial="initial"
