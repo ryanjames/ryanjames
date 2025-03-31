@@ -173,6 +173,9 @@ const SWorkInner = styled.div`
   flex-direction: column;
   margin-top: 40px;
   border-top: 1px solid ${styles.colors.black};
+  &:first-child {
+    padding-top: 50px;
+  }
 
   @media (min-width: ${styles.breakpoints.small}px) {
     margin-top: 69px;

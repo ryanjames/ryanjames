@@ -28,7 +28,7 @@ export default function Index() {
           visions to life, he takes a thoughtful, enthusiastic approach to every
           project.
         </h2>
-        <Link to="/work">View Work</Link>
+        <Link to="/work#san-francisco-standard-featured">View Work</Link>
       </motion.div>
     </SHero>
   );

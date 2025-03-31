@@ -67,7 +67,7 @@ export default function Header() {
           transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
         >
           <StyledNavLink
-            to="/work#san-francisco-standard"
+            to="/work#san-francisco-standard-featured"
             $active={location.pathname.startsWith("/work")}
           >
             Work
