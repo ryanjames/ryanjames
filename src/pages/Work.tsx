@@ -172,13 +172,10 @@ const SWorkInner = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+  border-top: 1px solid ${styles.colors.black};
 
   @media (min-width: ${styles.breakpoints.small}px) {
     margin-top: 69px;
-  }
-
-  @media (min-width: ${styles.breakpoints.small}px) {
-    border-top: 1px solid ${styles.colors.black};
   }
 
   @media (min-width: ${styles.breakpoints.large}px) {
@@ -217,7 +214,14 @@ const SCategory = styled.span`
 `;
 
 const SDescription = styled.div`
-  display: none;
+  padding-top: 24px;
+  display: block;
+  padding-left: 24px;
+  padding-right: 24px;
+  @media (min-width: ${styles.breakpoints.small}px) {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
   @media (min-width: ${styles.breakpoints.large}px) {
     position: sticky;
     align-self: flex-start;
@@ -228,8 +232,6 @@ const SDescription = styled.div`
     background-color: ${styles.colors.white};
     z-index: 2;
     padding-top: 30px;
-    padding-left: 0;
-    padding-right: 0;
     display: block;
     top: 76px;
     width: 300px;
@@ -239,27 +241,19 @@ const SDescription = styled.div`
   @media (min-width: ${styles.breakpoints.xLarge}px) {
     top: 80px;
   }
-  .description {
-    display: none;
-    padding-left: 9px;
-    @media (min-width: ${styles.breakpoints.large}px) {
-      padding-left: 0;
-      display: block;
-    }
-    @media (min-width: ${styles.breakpoints.xLarge}px) {
-      padding-left: 0;
-    }
-  }
   a {
     color: ${styles.colors.active} !important;
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 0.4em;
     display: block;
+    @media (min-width: ${styles.breakpoints.large}px) {
+      font-size: 1.2em;
+    }
     @media (min-width: ${styles.breakpoints.xLarge}px) {
       display: block;
     }

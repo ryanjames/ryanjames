@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -15,10 +14,8 @@ export default function WorkSelect({
   scrollToSection: any;
 }) {
   const location = useLocation(); // Using React Router's location
-  const navigate = useNavigate();
   const [activeHash, setActiveHash] = useState(location.hash); // Track hash state
   const [isOpen, setIsOpen] = useState(false);
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const flatItems = works.flatMap((category) =>
     category.items.map((item) => ({ ...item, category: item.category || category.category }))
   );
@@ -28,12 +25,6 @@ export default function WorkSelect({
     flatItems.find((item) => `#${item.slug}` === activeHash) || null
   );
 
-  const handleSelect = (item: TWork) => {
-    setSelectedItem(item as any);
-    setIsOpen(false);
-    scrollToSection(item.slug);
-    navigate(`/work#${item.slug}`, { replace: true });
-  };
   // Track hash change in URL manually using useEffect
   useEffect(() => {
     const handleHashChange = () => {
@@ -75,18 +66,7 @@ export default function WorkSelect({
                 />
               </svg>
             </SSelectedWorkText>
-            <SSelectedWorkDescriptionToggle
-              onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
-            >
-              <span>{isDescriptionOpen ? "-" : "+"}</span>
-              Info
-            </SSelectedWorkDescriptionToggle>
           </SSelectedWork>
-          {isDescriptionOpen && (
-            <SSelectedWorkDescription>
-              {selectedItem.description}
-            </SSelectedWorkDescription>
-          )}
         </>
       )}
       {isOpen && (
@@ -172,9 +152,7 @@ const SSelectedWorkText = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    @media (min-width: ${styles.breakpoints.large}px) {
-      font-weight: 300;
-    }
+    font-weight: 300;
   }
 
   span {
