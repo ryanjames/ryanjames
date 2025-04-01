@@ -231,7 +231,7 @@ const worksMobile: TWorks = [
       {
         title: "Innovationist",
         slug: "innovationist",
-        description: `Innovationist was a conceptual idea about gathering, managing, and organizing ideas in a graph-like architecture envisioned by <a href="https://www.joelfariss.com/" target="_blank">Joel Fariss.</a>. Think of it as bookmarking that's actually useful because it automated relationships between entities.`,
+        description: `Innovationist was a conceptual idea about gathering, managing, and organizing ideas in a graph-like architecture envisioned by <a href="https://www.joelfariss.com/" target="_blank">Joel Fariss</a>. Think of it as bookmarking that's actually useful because it automates relationships between entities.`,
         images: [
           {
             src: "/images/mobile/innovationist-1.jpg",
