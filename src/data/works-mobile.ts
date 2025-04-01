@@ -93,7 +93,7 @@ const worksMobile: TWorks = [
         slug: "sufjan-stevens-akr-featured",
         category: "Graphic Design",
         description:
-          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
         images: [
           {
             src: "/images/mobile/sufjan-stevens-3.jpg",
@@ -740,7 +740,7 @@ const worksMobile: TWorks = [
         title: "Sufjan Stevens / AKR",
         slug: "sufjan-stevens-akr",
         description:
-          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
         images: [
           {
             src: "/images/mobile/sufjan-stevens-3.jpg",

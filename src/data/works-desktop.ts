@@ -111,7 +111,7 @@ const works: TWorks = [
         slug: "sufjan-stevens-akr-featured",
         category: "Graphic Design",
         description:
-          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
         images: [
           {
             src: "/images/sufjan-stevens-3.jpg",
@@ -255,7 +255,7 @@ const works: TWorks = [
       {
         title: "Innovationist",
         slug: "innovationist",
-        description: `Innovationist was a conceptual idea about gathering, managing, and organizing ideas in a graph-like architecture envisioned by <a href="https://www.joelfariss.com/" target="_blank">Joel Fariss.</a>. Think of it as bookmarking that's actually useful because it automated relationships between entities.`,
+        description: `Innovationist was a conceptual idea about gathering, managing, and organizing ideas in a graph-like architecture envisioned by <a href="https://www.joelfariss.com/" target="_blank">Joel Fariss</a>. Think of it as bookmarking that's actually useful because it automates relationships between entities.`,
         images: [
           {
             src: "/images/innovationist-1.jpg",
@@ -832,7 +832,7 @@ const works: TWorks = [
         title: "Sufjan Stevens / AKR",
         slug: "sufjan-stevens-akr",
         description:
-          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide digital marketing assets for album releases.",
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
         images: [
           {
             src: "/images/sufjan-stevens-3.jpg",
