@@ -409,7 +409,7 @@ const worksMobile: TWorks = [
         title: "Figment.io",
         slug: "figment",
         description:
-          "Figment is a leading crypto staking platform designed for institutions with over $15 billion in assets staked through their platform. I worked with them to establish a brand and developed a website for their initial launch using Gatsby and DatoCMS.",
+          "Figment is a leading crypto staking platform designed for institutions with over $15 billion in assets staked through their platform. I worked with them to establish a brand and developed a website for their initial launch.",
         images: [
           {
             src: "/images/mobile/figment-1.jpg",
