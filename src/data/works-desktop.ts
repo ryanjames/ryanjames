@@ -390,7 +390,7 @@ const works: TWorks = [
         title: "Paper Crane Factory",
         slug: "paper-crane-factory",
         description:
-          "Out of the ashes of the legendary Seattle-based ad agency Wexley School for Girls, principal/creative director Cal McAllister launched Paper Crane Factory, and kept all of his experimental and gleefully irreverent advertising inclinations in tact. I've worked with PCF for a number of years on various development projects, both for their eccentric clients or for internal initiatives.",
+          "Out of the ashes of Seattle-based ad agency Wexley School for Girls, principal/creative director Cal McAllister launched Paper Crane Factory, and kept all of his experimental and gleefully irreverent advertising inclinations in tact. I've worked with PCF for a number of years on various development projects, both for their eccentric clients or for internal initiatives.",
         images: [
           {
             src: "/images/paper-crane-factory-1.jpg",
@@ -813,7 +813,7 @@ const works: TWorks = [
         title: "Holy Ground",
         slug: "holy-ground",
         description:
-          "Holy Ground's aim is to connect soulful, talented Christian scholars with Christian theological questions that are asked by everyday people. I developed a brand that is primarily steeped in traditional Christian motifs to provide a sense of trust and history.",
+          "Holy Ground's aim is to connect soulful, talented Christian scholars with theological questions that are asked by everyday people. I developed a brand that is primarily steeped in traditional Christian motifs to provide a sense of trust and history.",
         images: [
           {
             src: "/images/holy-ground-1.jpg",
