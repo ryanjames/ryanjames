@@ -45,9 +45,12 @@ export default function About() {
               ensuring that the projects he's involved with are both innovative
               and effective.
             </p>
-            <p>
+            <p className="links">
               <a href="ryan-james-resume-2025.pdf" target="_blank">
                 Resume
+              </a>
+              <a href="mailto:&#114;&#121;&#097;&#110;&#064;&#114;&#121;&#097;&#110;&#106;&#097;&#109;&#046;&#101;&#115;">
+                Contact
               </a>
             </p>
             <br />
@@ -98,6 +101,10 @@ const SContent = styled.div`
   bottom: 0;
   overflow-y: scroll;
   z-index: 2;
+  .links {
+    display: flex;
+    gap: 24px;
+  }
 `;
 
 const SContentInner = styled.div`
