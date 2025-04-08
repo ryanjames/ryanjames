@@ -169,56 +169,6 @@ const works: TWorks = [
     category: "Product Design",
     items: [
       {
-        title: "Betteromics",
-        slug: "betteromics-product-design",
-        description: `Betteromics was an innovative software development company whose mission was to help scientists and researchers in the biotech space accellerate their work by leveraging AI/ML. 
-          I was a product designer and front-end developer here (with a stint as the sole designer). I managed design systems, conributed to developing component libraries, and occasionally took the lead in building out entire interfaces in React.`,
-        images: [
-          {
-            src: "/images/betteromics-product-design-8.jpg",
-            alt: "Betteromics Product Design 8",
-            width: "900",
-            height: "785",
-          },
-          {
-            src: "/images/betteromics-product-design-5.jpg",
-            alt: "Betteromics Product Design 5",
-            width: "900",
-            height: "519",
-          },
-          {
-            src: "/images/betteromics-product-design-4.jpg",
-            alt: "Betteromics Product Design 4",
-            width: "900",
-            height: "694",
-          },
-          {
-            src: "/images/betteromics-product-design-1.jpg",
-            alt: "Betteromics Product Design 1",
-            width: "900",
-            height: "600",
-          },
-          {
-            src: "/images/betteromics-product-design-2.jpg",
-            alt: "Betteromics Product Design 2",
-            width: "900",
-            height: "600",
-          },
-          {
-            src: "/images/betteromics-product-design-6.jpg",
-            alt: "Betteromics Product Design 6",
-            width: "900",
-            height: "302",
-          },
-          {
-            src: "/images/betteromics-product-design-7.jpg",
-            alt: "Betteromics Product Design 7",
-            width: "900",
-            height: "485",
-          },
-        ],
-      },
-      {
         title: "Twist Bioscience",
         slug: "twist",
         description:
@@ -310,6 +260,56 @@ const works: TWorks = [
             alt: "Desiring God 1",
             width: "900",
             height: "3248",
+          },
+        ],
+      },
+      {
+        title: "Betteromics",
+        slug: "betteromics-product-design",
+        description: `Betteromics was an innovative software development company whose mission was to help scientists and researchers in the biotech space accellerate their work by leveraging AI/ML. 
+          I was a product designer and front-end developer here (with a stint as the sole designer). I managed design systems, conributed to developing component libraries, and occasionally took the lead in building out entire interfaces in React.`,
+        images: [
+          {
+            src: "/images/betteromics-product-design-8.jpg",
+            alt: "Betteromics Product Design 8",
+            width: "900",
+            height: "785",
+          },
+          {
+            src: "/images/betteromics-product-design-5.jpg",
+            alt: "Betteromics Product Design 5",
+            width: "900",
+            height: "519",
+          },
+          {
+            src: "/images/betteromics-product-design-4.jpg",
+            alt: "Betteromics Product Design 4",
+            width: "900",
+            height: "694",
+          },
+          {
+            src: "/images/betteromics-product-design-1.jpg",
+            alt: "Betteromics Product Design 1",
+            width: "900",
+            height: "600",
+          },
+          {
+            src: "/images/betteromics-product-design-2.jpg",
+            alt: "Betteromics Product Design 2",
+            width: "900",
+            height: "600",
+          },
+          {
+            src: "/images/betteromics-product-design-6.jpg",
+            alt: "Betteromics Product Design 6",
+            width: "900",
+            height: "302",
+          },
+          {
+            src: "/images/betteromics-product-design-7.jpg",
+            alt: "Betteromics Product Design 7",
+            width: "900",
+            height: "485",
           },
         ],
       },
@@ -405,56 +405,6 @@ const works: TWorks = [
   {
     category: "Branding",
     items: [
-      {
-        title: "The San Francisco Standard",
-        slug: "san-francisco-standard",
-        description:
-          "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
-        images: [
-          {
-            src: "/images/sf-standard-1.jpg",
-            alt: "The San Francisco Standard 1",
-            width: "900",
-            height: "600",
-          },
-          {
-            src: "/images/sf-standard-2.jpg",
-            alt: "The San Francisco Standard 2",
-            width: "900",
-            height: "783",
-          },
-          {
-            src: "/images/sf-standard-3.jpg",
-            alt: "The San Francisco Standard 3",
-            width: "900",
-            height: "494",
-          },
-          {
-            src: "/images/sf-standard-4.jpg",
-            alt: "The San Francisco Standard 4",
-            width: "900",
-            height: "198",
-          },
-          {
-            src: "/images/sf-standard-5.jpg",
-            alt: "The San Francisco Standard 5",
-            width: "900",
-            height: "512",
-          },
-          {
-            src: "/images/sf-standard-6.jpg",
-            alt: "The San Francisco Standard 6",
-            width: "900",
-            height: "584",
-          },
-          {
-            src: "/images/sf-standard-7.jpg",
-            alt: "The San Francisco Standard 7",
-            width: "900",
-            height: "514",
-          },
-        ],
-      },
       {
         title: "Figment.io",
         slug: "figment",
@@ -823,67 +773,61 @@ const works: TWorks = [
           },
         ],
       },
+      {
+        title: "The San Francisco Standard",
+        slug: "san-francisco-standard",
+        description:
+          "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
+        images: [
+          {
+            src: "/images/sf-standard-1.jpg",
+            alt: "The San Francisco Standard 1",
+            width: "900",
+            height: "600",
+          },
+          {
+            src: "/images/sf-standard-2.jpg",
+            alt: "The San Francisco Standard 2",
+            width: "900",
+            height: "783",
+          },
+          {
+            src: "/images/sf-standard-3.jpg",
+            alt: "The San Francisco Standard 3",
+            width: "900",
+            height: "494",
+          },
+          {
+            src: "/images/sf-standard-4.jpg",
+            alt: "The San Francisco Standard 4",
+            width: "900",
+            height: "198",
+          },
+          {
+            src: "/images/sf-standard-5.jpg",
+            alt: "The San Francisco Standard 5",
+            width: "900",
+            height: "512",
+          },
+          {
+            src: "/images/sf-standard-6.jpg",
+            alt: "The San Francisco Standard 6",
+            width: "900",
+            height: "584",
+          },
+          {
+            src: "/images/sf-standard-7.jpg",
+            alt: "The San Francisco Standard 7",
+            width: "900",
+            height: "514",
+          },
+        ],
+      },
     ],
   },
   {
     category: "Graphic Design",
     items: [
-      {
-        title: "Sufjan Stevens / AKR",
-        slug: "sufjan-stevens-akr",
-        description:
-          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
-        images: [
-          {
-            src: "/images/sufjan-stevens-3.jpg",
-            alt: "Sufjan Stevens Graphic Design 3",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-4.jpg",
-            alt: "Sufjan Stevens Graphic Design 4",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-1.jpg",
-            alt: "Sufjan Stevens Graphic Design 1",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-2.jpg",
-            alt: "Sufjan Stevens Graphic Design 2",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-5.jpg",
-            alt: "Sufjan Stevens Graphic Design 5",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-6.jpg",
-            alt: "Sufjan Stevens Graphic Design 6",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-7.jpg",
-            alt: "Sufjan Stevens Graphic Design 7",
-            width: "900",
-            height: "900",
-          },
-          {
-            src: "/images/sufjan-stevens-8.jpg",
-            alt: "Sufjan Stevens Graphic Design 8",
-            width: "900",
-            height: "900",
-          },
-        ],
-      },
       {
         title: "The Classic Crime",
         slug: "the-classic-crime",
@@ -1032,6 +976,62 @@ const works: TWorks = [
           {
             src: "/images/angelo-de-augustine-1.jpg",
             alt: "Angelo De Augustine 1",
+            width: "900",
+            height: "900",
+          },
+        ],
+      },
+      {
+        title: "Sufjan Stevens / AKR",
+        slug: "sufjan-stevens-akr",
+        description:
+          "Sufjan Stevens is an artist I've greatly admired for years (and you should too!). For the past several years I've collaborated with other artists and illustrators to realize the physical products behind his exceptional music, as well as provide marketing materials for album releases.",
+        images: [
+          {
+            src: "/images/sufjan-stevens-3.jpg",
+            alt: "Sufjan Stevens Graphic Design 3",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-4.jpg",
+            alt: "Sufjan Stevens Graphic Design 4",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-1.jpg",
+            alt: "Sufjan Stevens Graphic Design 1",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-2.jpg",
+            alt: "Sufjan Stevens Graphic Design 2",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-5.jpg",
+            alt: "Sufjan Stevens Graphic Design 5",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-6.jpg",
+            alt: "Sufjan Stevens Graphic Design 6",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-7.jpg",
+            alt: "Sufjan Stevens Graphic Design 7",
+            width: "900",
+            height: "900",
+          },
+          {
+            src: "/images/sufjan-stevens-8.jpg",
+            alt: "Sufjan Stevens Graphic Design 8",
             width: "900",
             height: "900",
           },
