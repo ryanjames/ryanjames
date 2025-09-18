@@ -7,7 +7,6 @@ import styled from "styled-components";
 import clients from "../data/clients";
 
 export default function About() {
-
   useEffect(() => {
     document.body.classList.add("about");
 
@@ -87,7 +86,7 @@ const SClients = styled.div`
     gap: 32px;
     opacity: 0.6;
   }
-`
+`;
 
 const SContent = styled.div`
   position: absolute;

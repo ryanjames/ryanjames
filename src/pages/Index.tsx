@@ -3,14 +3,15 @@ import styled from "styled-components";
 import Meta from "../components/Meta";
 import { Link } from "react-router-dom";
 import { styles } from "../components/Styles";
-import {
-  heroVariants,
-} from "../animations";
+import { heroVariants } from "../animations";
 
 export default function Index() {
   return (
     <SHero>
-		  <Meta title="Ryan James - Designer and developer" description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington." />
+      <Meta
+        title="Ryan James - Designer and developer"
+        description="Ryan James is a multidisciplinary designer and developer from Seattle, Washington."
+      />
       <motion.div
         variants={heroVariants}
         initial="initial"
@@ -18,9 +19,9 @@ export default function Index() {
         exit="exit"
       >
         <h2>
-          Ryan James is a multidisciplinary designer and developer with 20+
-          years of experience. He combines strategic thinking with hands-on
-          execution, working seamlessly in teams of all sizes. From UX,
+          Ryan James is a multidisciplinary creative, developer and entrepreneur
+          with 20+ years of experience. He combines strategic thinking with
+          hands-on execution, working seamlessly in teams of all sizes. From UX,
           interface design, and design systems to bringing brands and artists’
           visions to life, he takes a thoughtful, enthusiastic approach to every
           project.
@@ -72,7 +73,9 @@ const SHero = styled.div`
     line-height: 120%;
     margin-bottom: 0.5em;
   }
-  a, a:visited, a:active {
+  a,
+  a:visited,
+  a:active {
     color: ${styles.colors.active} !important;
   }
 `;
