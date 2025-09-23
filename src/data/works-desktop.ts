@@ -1,4 +1,4 @@
-import type { TWorks } from "../types"
+import type { TWorks } from "../types";
 
 const works: TWorks = [
   {
@@ -316,7 +316,7 @@ const works: TWorks = [
     ],
   },
   {
-    category: "Web Development",
+    category: "Web Engineering",
     items: [
       {
         title: "Betteromics",
@@ -326,7 +326,7 @@ const works: TWorks = [
         images: [
           {
             src: "/images/betteromics-development-1.jpg",
-            alt: "Betteromics Web Development 1",
+            alt: "Betteromics Web Engineering",
             width: "900",
             height: "785",
           },
@@ -1040,5 +1040,5 @@ const works: TWorks = [
     ],
   },
 ];
- 
-export default works
+
+export default works;

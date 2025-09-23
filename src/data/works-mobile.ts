@@ -292,7 +292,7 @@ const worksMobile: TWorks = [
     ],
   },
   {
-    category: "Web Development",
+    category: "Web Engineering",
     items: [
       {
         title: "Betteromics",
@@ -302,7 +302,7 @@ const worksMobile: TWorks = [
         images: [
           {
             src: "/images/mobile/betteromics-development-1.jpg",
-            alt: "Betteromics Web Development 1",
+            alt: "Betteromics Web Engineering",
             width: "400",
             height: "500",
           },
