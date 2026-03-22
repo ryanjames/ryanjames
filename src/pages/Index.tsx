@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <SHero>
       <Meta
-        title="Ryan James - Designer and developer"
+        title="Ryan James - Multidisciplinary creative, web engineer, and entrepreneur"
         description="Ryan James is a multidisciplinary creative, web engineer, and entrepreneur from Seattle, Washington."
       />
       <motion.div
