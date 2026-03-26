@@ -118,7 +118,7 @@ const SContentInner = styled.div`
     font-size: 1.3em;
   }
   @media (min-width: ${styles.breakpoints.medium}px) {
-    width: 55%;
+    width: 45%;
     font-size: 1.3em;
   }
   @media (min-width: ${styles.breakpoints.large}px) {
@@ -126,7 +126,7 @@ const SContentInner = styled.div`
   }
   @media (min-width: ${styles.breakpoints.xLarge}px) {
     font-size: 1.75em;
-    width: 55%;
+    width: 45%;
   }
   p {
     font-weight: 300;
