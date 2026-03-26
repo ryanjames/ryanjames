@@ -1,5 +1,6 @@
 [build]
-  publish = "public"
+  command = "npm run build"
+  publish = "dist"
 
 [[edge_functions]]
   function = "client-auth"
