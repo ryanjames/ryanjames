@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HearMeWA — Client Portal</title>
+    <style>
+      @font-face {
+        font-family: "Nacelle";
+        src: url("/fonts/Nacelle-Light.woff2") format("woff2");
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Nacelle";
+        src: url("/fonts/Nacelle-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Nacelle";
+        src: url("/fonts/Nacelle-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --black: rgb(16, 18, 20);
+        --white: rgb(255, 255, 255);
+        --blue: rgb(0, 112, 243);
+        --off-black: rgba(16, 18, 20, 0.2);
+        --gray: rgb(233, 235, 237);
+        --dark-gray: rgb(53, 58, 62);
+      }
+
+      body {
+        font-family:
+          "Nacelle",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        font-weight: 300;
+        background: var(--white);
+        color: var(--black);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        height: 80px;
+        border-bottom: 1px solid var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 100;
+      }
+
+      .header-left {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .client-name {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .portal-label {
+        font-size: 0.7rem;
+        font-family: "SF Mono", "Menlo", "Consolas", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--dark-gray);
+      }
+
+      .back-link {
+        font-size: 0.85rem;
+        font-family: "SF Mono", "Menlo", "Consolas", monospace;
+        color: var(--black);
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+      }
+
+      .back-link:hover {
+        color: var(--blue);
+      }
+
+      main {
+        flex: 1;
+        padding: 64px 32px;
+        max-width: 720px;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        color: var(--dark-gray);
+        margin-bottom: 48px;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-family: "SF Mono", "Menlo", "Consolas", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--dark-gray);
+        margin-bottom: 16px;
+      }
+
+      .doc-list {
+        list-style: none;
+        border-top: 1px solid var(--black);
+      }
+
+      .doc-list li {
+        border-bottom: 1px solid var(--gray);
+      }
+
+      .doc-list a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        text-decoration: none;
+        color: var(--black);
+        transition: color 0.2s ease-in-out;
+        gap: 16px;
+      }
+
+      .doc-list a:hover {
+        color: var(--blue);
+      }
+
+      .doc-list a:hover .doc-arrow {
+        transform: translateX(4px);
+      }
+
+      .doc-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .doc-title {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .doc-meta {
+        font-size: 0.75rem;
+        font-family: "SF Mono", "Menlo", "Consolas", monospace;
+        color: var(--dark-gray);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .doc-arrow {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      footer {
+        padding: 32px;
+        border-top: 1px solid var(--gray);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        font-family: "SF Mono", "Menlo", "Consolas", monospace;
+        color: var(--dark-gray);
+      }
+
+      footer a {
+        color: var(--dark-gray);
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+      }
+
+      footer a:hover {
+        color: var(--blue);
+      }
+
+      @media (max-width: 521px) {
+        header {
+          height: 50px;
+          padding: 0 16px;
+        }
+
+        main {
+          padding: 40px 16px;
+        }
+
+        footer {
+          padding: 24px 16px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <span class="client-name">HearMeWA</span>
+        <span class="portal-label">Client Portal</span>
+      </div>
+      <a href="https://ryanjam.es" class="back-link">← ryanjam.es</a>
+    </header>
+
+    <main>
+      <h1>Documents &amp; Resources</h1>
+      <p class="subtitle">Everything shared for your project, in one place.</p>
+
+      <p class="section-label">Deliverables</p>
+      <ul class="doc-list">
+        <li>
+          <a href="tip-form-recommendations.html">
+            <div class="doc-info">
+              <span class="doc-title">Tip Form Recommendations</span>
+              <span class="doc-meta">Document</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <span>HearMeWA × Ryan James</span>
+      <a href="https://ryanjam.es">ryanjam.es</a>
+    </footer>
+  </body>
+</html>

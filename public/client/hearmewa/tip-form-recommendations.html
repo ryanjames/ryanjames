@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HearMeWA — Submit a Concern</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green-dark: #14633a;
+        --green: #1b7340;
+        --green-light: #e8f5ee;
+        --green-hover: #165e34;
+        --red: #c0392b;
+        --red-bg: #fdf2f0;
+        --red-border: #e6b8b3;
+        --warm-white: #fafaf8;
+        --white: #ffffff;
+        --gray-50: #f7f7f5;
+        --gray-100: #efefed;
+        --gray-200: #ddddd9;
+        --gray-300: #c4c4be;
+        --gray-500: #8a8a82;
+        --gray-700: #4a4a44;
+        --gray-900: #1a1a17;
+        --radius: 10px;
+        --shadow-card:
+          0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+        --shadow-input-focus: 0 0 0 3px rgba(27, 115, 64, 0.15);
+        --transition: 0.2s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "DM Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: var(--warm-white);
+        color: var(--gray-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 80px;
+      }
+
+      .site-header {
+        background: var(--white);
+        border-bottom: 1px solid var(--gray-100);
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-mark {
+        width: 44px;
+        height: 44px;
+        background: var(--green);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 11px;
+        font-style: italic;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-text strong {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.3px;
+      }
+      .logo-text span {
+        font-size: 13px;
+        color: var(--gray-500);
+      }
+
+      /* Options & Language Dropdown */
+      .options-dropdown-wrap {
+        position: relative;
+      }
+
+      .options-btn {
+        background: var(--green);
+        color: white;
+        border: none;
+        padding: 9px 16px;
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background var(--transition);
+      }
+      .options-btn:hover {
+        background: var(--green-hover);
+      }
+      .options-btn svg {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.2s ease;
+      }
+      .options-dropdown-wrap.open .options-btn svg {
+        transform: rotate(180deg);
+      }
+
+      .options-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        min-width: 240px;
+        z-index: 200;
+        overflow: hidden;
+      }
+      .options-dropdown-wrap.open .options-menu {
+        display: block;
+      }
+
+      .menu-group-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--gray-300);
+        padding: 12px 16px 6px;
+      }
+      .menu-divider {
+        border: none;
+        border-top: 1px solid var(--gray-100);
+        margin: 4px 0;
+      }
+
+      .menu-item {
+        display: block;
+        width: 100%;
+        padding: 9px 16px;
+        font-family: inherit;
+        font-size: 14px;
+        color: var(--gray-700);
+        background: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        transition: background var(--transition);
+        text-decoration: none;
+      }
+      .menu-item:hover {
+        background: var(--green-light);
+        color: var(--green-dark);
+      }
+      .menu-item.active {
+        font-weight: 600;
+        color: var(--green);
+      }
+      .menu-item.destructive {
+        color: var(--red);
+      }
+      .menu-item.destructive:hover {
+        background: var(--red-bg);
+        color: var(--red);
+      }
+
+      .backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 150;
+      }
+      .options-dropdown-wrap.open .backdrop {
+        display: block;
+      }
+
+      /* Page */
+      .page-wrapper {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 28px 20px 32px;
+      }
+
+      /* Emergency Banner */
+      .emergency-banner {
+        background: var(--red-bg);
+        border: 1px solid var(--red-border);
+        border-radius: var(--radius);
+        padding: 14px 18px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .emergency-icon {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        color: var(--red);
+      }
+      .emergency-banner p {
+        font-size: 14px;
+        color: var(--gray-700);
+        line-height: 1.5;
+      }
+      .emergency-banner strong {
+        color: var(--red);
+      }
+
+      /* Required Section */
+      .required-section {
+        background: var(--white);
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-card);
+        margin-bottom: 24px;
+      }
+      .required-section-header {
+        background: var(--green);
+        padding: 16px 24px;
+      }
+      .required-section-header h2 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.2px;
+      }
+      .required-section-header p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        margin-top: 2px;
+      }
+      .required-section-body {
+        padding: 24px;
+      }
+
+      /* Optional Label */
+      .optional-label {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--gray-300);
+        margin-bottom: 12px;
+      }
+
+      /* Collapsible Sections */
+      .form-section {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-card);
+        margin-bottom: 12px;
+        overflow: hidden;
+        border: 1px solid var(--gray-100);
+      }
+      .section-header {
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+        transition: background var(--transition);
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+      }
+      .section-header:hover {
+        background: var(--gray-50);
+      }
+      .section-header h2 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--gray-900);
+        letter-spacing: -0.2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .section-icon {
+        width: 18px;
+        height: 18px;
+        color: var(--gray-300);
+        flex-shrink: 0;
+      }
+      .section-chevron {
+        width: 18px;
+        height: 18px;
+        color: var(--gray-300);
+        transition: transform 0.25s ease;
+      }
+      .form-section.open .section-chevron {
+        transform: rotate(180deg);
+      }
+      .section-body {
+        padding: 0 20px 20px;
+        display: none;
+      }
+      .form-section.open .section-body {
+        display: block;
+      }
+      .section-badge {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--gray-500);
+        background: var(--gray-100);
+        padding: 3px 8px;
+        border-radius: var(--radius);
+        margin-right: 6px;
+      }
+
+      /* Fields */
+      .field-group {
+        margin-bottom: 16px;
+      }
+      .field-group:last-child {
+        margin-bottom: 0;
+      }
+      .field-row {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .field-row:last-child {
+        margin-bottom: 0;
+      }
+      .field-row.cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .field-row.cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .field-row.cols-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      @media (max-width: 560px) {
+        .field-row.cols-2,
+        .field-row.cols-3,
+        .field-row.cols-4 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--gray-700);
+        margin-bottom: 5px;
+      }
+      label .required {
+        color: var(--red);
+        margin-left: 2px;
+      }
+      label .optional {
+        color: var(--gray-300);
+        font-weight: 400;
+        font-size: 12px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="date"],
+      input[type="time"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px 12px;
+        font-family: inherit;
+        font-size: 14px;
+        color: var(--gray-900);
+        background: var(--gray-50);
+        border: 1.5px solid var(--gray-200);
+        border-radius: var(--radius);
+        outline: none;
+        transition:
+          border-color var(--transition),
+          box-shadow var(--transition),
+          background var(--transition);
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--green);
+        box-shadow: var(--shadow-input-focus);
+        background: var(--white);
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: var(--gray-300);
+      }
+      textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+      .char-count {
+        text-align: right;
+        font-size: 11px;
+        color: var(--gray-300);
+        margin-top: 3px;
+      }
+      select {
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A8A82' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 36px;
+      }
+
+      /* Checkbox */
+      .checkbox-group {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-top: 1px;
+        accent-color: var(--green);
+        flex-shrink: 0;
+        cursor: pointer;
+        appearance: auto;
+        -webkit-appearance: auto;
+        border: none;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+      }
+      .checkbox-group input[type="checkbox"]:focus {
+        box-shadow: none;
+      }
+      .checkbox-label {
+        font-size: 14px;
+        color: var(--gray-700);
+        line-height: 1.45;
+        cursor: pointer;
+      }
+      .checkbox-label a {
+        color: var(--green);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        font-weight: 500;
+      }
+      .checkbox-label a:hover {
+        color: var(--green-dark);
+      }
+
+      /* File Upload */
+      .file-drop {
+        border: 2px dashed var(--gray-200);
+        border-radius: var(--radius);
+        padding: 28px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition:
+          border-color var(--transition),
+          background var(--transition);
+      }
+      .file-drop:hover {
+        border-color: var(--green);
+        background: var(--green-light);
+      }
+      .file-drop-icon {
+        width: 36px;
+        height: 36px;
+        color: var(--gray-300);
+        margin: 0 auto 10px;
+      }
+      .file-drop p {
+        font-size: 13px;
+        color: var(--gray-500);
+      }
+      .file-drop p strong {
+        color: var(--green);
+      }
+      .file-drop .file-limit {
+        font-size: 11px;
+        color: var(--gray-300);
+        margin-top: 4px;
+      }
+
+      /* Sticky Footer */
+      .sticky-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-top: 1px solid var(--gray-100);
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        z-index: 100;
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+      }
+      .footer-note {
+        font-size: 12px;
+        color: var(--gray-300);
+      }
+      .btn-submit {
+        background: var(--green);
+        color: white;
+        border: none;
+        padding: 11px 40px;
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background var(--transition),
+          transform 0.1s ease;
+        letter-spacing: -0.2px;
+      }
+      .btn-submit:hover {
+        background: var(--green-hover);
+      }
+      .btn-submit:active {
+        transform: scale(0.98);
+      }
+
+      .field-divider {
+        border: none;
+        border-top: 1px solid var(--gray-100);
+        margin: 16px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo-group">
+        <div class="logo-mark">Hear<br />MeWA</div>
+        <div class="logo-text">
+          <strong>HearMeWA</strong>
+          <span>(888) 537-1634 &nbsp;|&nbsp; hearmewa.org</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="options-dropdown-wrap" id="optionsDropdown">
+          <div class="backdrop" onclick="closeDropdown()"></div>
+          <button class="options-btn" onclick="toggleDropdown()">
+            Options &amp; Language
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 6l4 4 4-4" />
+            </svg>
+          </button>
+          <div class="options-menu">
+            <div class="menu-group-label">Language</div>
+            <button class="menu-item active">English</button>
+            <button class="menu-item">Español</button>
+            <button class="menu-item">中文 (Chinese)</button>
+            <button class="menu-item">Tiếng Việt (Vietnamese)</button>
+            <button class="menu-item">한국어 (Korean)</button>
+            <button class="menu-item">Tagalog</button>
+            <button class="menu-item">Русский (Russian)</button>
+            <button class="menu-item">العربية (Arabic)</button>
+            <button class="menu-item">ਪੰਜਾਬੀ (Punjabi)</button>
+            <button class="menu-item">日本語 (Japanese)</button>
+            <button class="menu-item">Українська (Ukrainian)</button>
+            <button class="menu-item">Soomaali (Somali)</button>
+            <button class="menu-item">Khmer (Cambodian)</button>
+            <button class="menu-item">ภาษาไทย (Thai)</button>
+            <hr class="menu-divider" />
+            <div class="menu-group-label">Tools</div>
+            <button class="menu-item">Follow-Up on an Existing Report</button>
+            <a class="menu-item" href="#terms">Terms of Use</a>
+            <button class="menu-item destructive">Clear Form</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-wrapper">
+      <div class="emergency-banner">
+        <svg
+          class="emergency-icon"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path d="M10 2L1 18h18L10 2z" stroke-linejoin="round" />
+          <path d="M10 8v4M10 14.5v.5" stroke-linecap="round" />
+        </svg>
+        <p>
+          <strong>Call 911</strong> if this is an emergency or a crime in
+          progress. This form is for submitting concerns about your own or
+          another person's safety or well-being.
+        </p>
+      </div>
+
+      <form>
+        <!-- ═══ REQUIRED FIELDS ═══ -->
+        <div class="required-section">
+          <div class="required-section-header">
+            <h2>Tell Us What Happened</h2>
+            <p>All fields in this section are required.</p>
+          </div>
+          <div class="required-section-body">
+            <div class="field-group">
+              <label>Event Description <span class="required">*</span></label>
+              <textarea
+                placeholder="Who, what, when, where, and how do you know?"
+                maxlength="450"
+                oninput="updateCount(this)"
+              ></textarea>
+              <div class="char-count"><span class="count-val">0</span>/450</div>
+            </div>
+
+            <div class="field-group">
+              <label
+                >Is this tip related to a school incident?
+                <span class="required">*</span></label
+              >
+              <select>
+                <option value="" disabled selected>Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label
+                >City / County of Incident
+                <span class="required">*</span></label
+              >
+              <input type="text" placeholder="e.g. Seattle, King County" />
+            </div>
+
+            <div class="field-group">
+              <label
+                >Concern / Event Type <span class="required">*</span></label
+              >
+              <select>
+                <option value="" disabled selected>Select a type</option>
+                <option>Bullying</option>
+                <option>Self-harm or suicide</option>
+                <option>Substance abuse</option>
+                <option>Abuse or neglect</option>
+                <option>Violence or threats</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <hr class="field-divider" />
+
+            <div class="field-group">
+              <div class="checkbox-group">
+                <input type="checkbox" id="termsCheckbox" />
+                <label class="checkbox-label" for="termsCheckbox">
+                  I accept the <a href="#terms" target="_blank">Terms of Use</a>
+                  <span class="required">*</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ OPTIONAL SECTIONS ═══ -->
+        <p class="optional-label">Additional details (optional)</p>
+
+        <!-- Person Involved -->
+        <div class="form-section">
+          <button
+            type="button"
+            class="section-header"
+            onclick="toggleSection(this)"
+          >
+            <h2>
+              <svg
+                class="section-icon"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="6" r="3.5" />
+                <path d="M3 18c0-3.5 3-6 7-6s7 2.5 7 6" />
+              </svg>
+              Person Involved
+            </h2>
+            <div style="display: flex; align-items: center; gap: 6px">
+              <span class="section-badge">1 person</span>
+              <svg
+                class="section-chevron"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 7.5L10 12.5L15 7.5" />
+              </svg>
+            </div>
+          </button>
+          <div class="section-body">
+            <div class="field-row cols-2">
+              <div class="field-group">
+                <label>Role</label>
+                <select>
+                  <option value="" disabled selected>Select a role</option>
+                  <option>Victim</option>
+                  <option>Suspect</option>
+                  <option>Witness</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Relationship to you</label>
+                <select>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Friend</option>
+                  <option>Classmate</option>
+                  <option>Family member</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row cols-3">
+              <div class="field-group">
+                <label>First Name</label
+                ><input type="text" placeholder="First" />
+              </div>
+              <div class="field-group">
+                <label>Last Name</label><input type="text" placeholder="Last" />
+              </div>
+              <div class="field-group">
+                <label>Nickname</label
+                ><input type="text" placeholder="Nickname" />
+              </div>
+            </div>
+            <div class="field-row cols-3">
+              <div class="field-group">
+                <label>Age</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>Under 10</option>
+                  <option>10–12</option>
+                  <option>13–15</option>
+                  <option>16–17</option>
+                  <option>18+</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>School Attended</label
+                ><input type="text" placeholder="School name" />
+              </div>
+              <div class="field-group">
+                <label>Grade</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>K–5</option>
+                  <option>6–8</option>
+                  <option>9–12</option>
+                  <option>College</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row cols-3">
+              <div class="field-group">
+                <label>Gender</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>Female</option>
+                  <option>Male</option>
+                  <option>Non-binary</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Race</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>American Indian / Alaska Native</option>
+                  <option>Asian</option>
+                  <option>Black / African American</option>
+                  <option>Hispanic / Latino</option>
+                  <option>Native Hawaiian / Pacific Islander</option>
+                  <option>White</option>
+                  <option>Two or more races</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Pronouns</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>She/her</option>
+                  <option>He/him</option>
+                  <option>They/them</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <hr class="field-divider" />
+            <div class="field-row cols-3">
+              <div class="field-group">
+                <label>Address <span class="optional">(optional)</span></label
+                ><input type="text" placeholder="Street address" />
+              </div>
+              <div class="field-group">
+                <label>City <span class="optional">(optional)</span></label
+                ><input type="text" placeholder="City" />
+              </div>
+              <div class="field-group">
+                <label>Zip Code <span class="optional">(optional)</span></label
+                ><input type="text" placeholder="Zip" />
+              </div>
+            </div>
+            <div class="field-row cols-2">
+              <div class="field-group">
+                <label>Phone <span class="optional">(optional)</span></label
+                ><input type="tel" placeholder="(000) 000-0000" />
+              </div>
+              <div class="field-group">
+                <label>Email <span class="optional">(optional)</span></label
+                ><input type="email" placeholder="email@example.com" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Details -->
+        <div class="form-section">
+          <button
+            type="button"
+            class="section-header"
+            onclick="toggleSection(this)"
+          >
+            <h2>
+              <svg
+                class="section-icon"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="14" height="14" rx="1" />
+                <path d="M3 8h14M7 2v4M13 2v4" />
+              </svg>
+              Event Details
+            </h2>
+            <svg
+              class="section-chevron"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 7.5L10 12.5L15 7.5" />
+            </svg>
+          </button>
+          <div class="section-body">
+            <div class="field-group">
+              <label>Is this a recurring event?</label>
+              <select>
+                <option value="" disabled selected>Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div class="field-row cols-2">
+              <div class="field-group">
+                <label>Date of event</label><input type="date" />
+              </div>
+              <div class="field-group">
+                <label>Time of event</label><input type="time" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle -->
+        <div class="form-section">
+          <button
+            type="button"
+            class="section-header"
+            onclick="toggleSection(this)"
+          >
+            <h2>
+              <svg
+                class="section-icon"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3 13h14M4 13l1.5-5h9L16 13M5.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM14.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                />
+              </svg>
+              Vehicle
+            </h2>
+            <svg
+              class="section-chevron"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 7.5L10 12.5L15 7.5" />
+            </svg>
+          </button>
+          <div class="section-body">
+            <div class="field-row cols-4">
+              <div class="field-group">
+                <label>Brand</label
+                ><input type="text" placeholder="e.g. Toyota" />
+              </div>
+              <div class="field-group">
+                <label>Model</label
+                ><input type="text" placeholder="e.g. Camry" />
+              </div>
+              <div class="field-group">
+                <label>Year</label><input type="text" placeholder="e.g. 2020" />
+              </div>
+              <div class="field-group">
+                <label>Color</label
+                ><input type="text" placeholder="e.g. Blue" />
+              </div>
+            </div>
+            <div class="field-row cols-2">
+              <div class="field-group">
+                <label>License Plate</label
+                ><input type="text" placeholder="Plate number" />
+              </div>
+              <div class="field-group">
+                <label>State / Country</label
+                ><input type="text" placeholder="e.g. WA" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label
+                >Description <span class="optional">(optional)</span></label
+              >
+              <textarea
+                placeholder="Any identifying marks, bumper stickers, company logos, etc."
+                style="min-height: 72px"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="form-section">
+          <button
+            type="button"
+            class="section-header"
+            onclick="toggleSection(this)"
+          >
+            <h2>
+              <svg
+                class="section-icon"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="7.5" />
+                <path d="M10 9v4.5M10 6.5v.5" />
+              </svg>
+              Additional Information
+            </h2>
+            <svg
+              class="section-chevron"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 7.5L10 12.5L15 7.5" />
+            </svg>
+          </button>
+          <div class="section-body">
+            <div class="field-group">
+              <label>Have you reported this concern before?</label>
+              <select>
+                <option value="" disabled selected>Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label
+                >Social Media Link
+                <span class="optional">(optional)</span></label
+              >
+              <input type="url" placeholder="https://..." />
+            </div>
+            <div class="field-group">
+              <label>How did you hear about our program?</label>
+              <select>
+                <option value="" disabled selected>Select one</option>
+                <option>School</option>
+                <option>Social media</option>
+                <option>Friend or family</option>
+                <option>News</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-section">
+          <button
+            type="button"
+            class="section-header"
+            onclick="toggleSection(this)"
+          >
+            <h2>
+              <svg
+                class="section-icon"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M11 2H5a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V8l-6-6zM11 2v6h6"
+                />
+              </svg>
+              File Upload
+            </h2>
+            <svg
+              class="section-chevron"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 7.5L10 12.5L15 7.5" />
+            </svg>
+          </button>
+          <div class="section-body">
+            <div class="field-group">
+              <label
+                >File Description
+                <span class="optional">(optional)</span></label
+              >
+              <input type="text" placeholder="Briefly describe the file" />
+            </div>
+            <div class="field-group">
+              <label>Does this upload contain inappropriate content?</label>
+              <select>
+                <option value="" disabled selected>Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <div
+                class="file-drop"
+                onclick="document.getElementById('fileInput').click()"
+              >
+                <svg
+                  class="file-drop-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"
+                  />
+                </svg>
+                <p><strong>Click to upload</strong> or drag and drop</p>
+                <p class="file-limit">
+                  Images, videos, audio, or documents — up to 100 MB
+                </p>
+              </div>
+              <input type="file" id="fileInput" style="display: none" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sticky Submit Footer -->
+    <div class="sticky-footer">
+      <span class="footer-note">Reviewed by the HearMeWA team</span>
+      <button type="submit" class="btn-submit">Submit Concern</button>
+    </div>
+
+    <script>
+      function toggleSection(btn) {
+        btn.closest(".form-section").classList.toggle("open");
+      }
+      function updateCount(textarea) {
+        const c = textarea.parentElement.querySelector(".count-val");
+        if (c) c.textContent = textarea.value.length;
+      }
+      function toggleDropdown() {
+        document.getElementById("optionsDropdown").classList.toggle("open");
+      }
+      function closeDropdown() {
+        document.getElementById("optionsDropdown").classList.remove("open");
+      }
+      document
+        .querySelectorAll(".options-menu .menu-item")
+        .forEach((i) => i.addEventListener("click", closeDropdown));
+    </script>
+  </body>
+</html>
