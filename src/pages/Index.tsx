@@ -20,13 +20,17 @@ export default function Index() {
       >
         <h2>
           Ryan James is a multidisciplinary creative, web engineer, and
-          entrepreneur with 20+ years of experience. He combines strategic
-          thinking with hands-on execution, working seamlessly in teams of all
-          sizes. From UX, interface design, and design systems to bringing
-          brands and artists' visions to life, he takes a thoughtful,
-          enthusiastic approach to every project.
+          entrepreneur with 20+ years of experience. From UX, interface design,
+          and design systems to bringing brands and artists' visions to life, he
+          takes a thoughtful, enthusiastic approach to every project.
         </h2>
         <Link to="/work#san-francisco-standard-featured">View Work</Link>
+        <p className="substack">
+          Writing about AI and digital creation —{" "}
+          <a href="https://ryanrjames.substack.com/" target="_blank">
+            Dispatches on AI
+          </a>
+        </p>
       </motion.div>
     </SHero>
   );
@@ -77,5 +81,14 @@ const SHero = styled.div`
   a:visited,
   a:active {
     color: ${styles.colors.active} !important;
+  }
+  .substack {
+    margin-top: 1em;
+    font-size: 0.45em;
+    font-weight: 300;
+    color: ${styles.colors.black};
+    a {
+      color: ${styles.colors.active} !important;
+    }
   }
 `;
