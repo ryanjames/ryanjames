@@ -108,7 +108,7 @@ const Work = function Work() {
           </SDescription>
           <SImage>
             {item.images.map((image: TWorkImage) => (
-              <LazyImage className="work-image" key={image.src} src={image.src} alt={image.alt} width={image.width} height={image.height} />
+              <LazyImage className="work-image" key={image.src} src={image.src} alt={image.alt} width={image.width} height={image.height} type={image.type} />
             ))}
           </SImage>
         </SWorkInner>
@@ -203,6 +203,7 @@ const SWorkInner = styled.div`
 const SImage = styled.div`
   flex: 1;
   padding-top: 38px;
+  max-width: 1200px;
   .work-image {
     width: 100%;
     height: auto;

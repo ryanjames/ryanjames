@@ -3,6 +3,7 @@ export type TWorkImage = {
   alt: string;
   width: string;
   height: string;
+  type?: "video";
 }
 export type TWork = {
   title: string;

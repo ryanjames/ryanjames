@@ -9,7 +9,7 @@ const works: TWorks = [
         category: "Branding",
         slug: "san-francisco-standard-featured",
         description:
-          "The San Francisco Standard is the Bay Area’s fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
+          "The San Francisco Standard is the Bay Area's fastest growing source for news and information. I developed a brand for the publisher that reflected a modern, neutral aesthetic to compliment their commitment to provide San Francisco with the journalism it deserves.",
         images: [
           {
             src: "/images/sf-standard-1.jpg",
@@ -160,6 +160,91 @@ const works: TWorks = [
             alt: "Sufjan Stevens Graphic Design 8",
             width: "900",
             height: "900",
+          },
+        ],
+      },
+      {
+        title: "Valinor",
+        slug: "valinor-featured",
+        category: "Branding",
+        description:
+          "Valinor is a defense technology company founded by veterans of Palantir, purpose-built to bring enterprise-grade intelligence hardware and software to national security challenges. I developed distinct brand identities for six of their subsidiary products — each with its own visual language, unified by a coherent overarching system — and designed and engineered their full web presence from the ground up.",
+        images: [
+          {
+            src: "/videos/valinor-flow.mp4",
+            alt: "Valinor product flow",
+            width: "1200",
+            height: "1200",
+            type: "video",
+          },
+          {
+            src: "/images/valinor-1.jpg",
+            alt: "Valinor 1",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-2.jpg",
+            alt: "Valinor 2",
+            width: "900",
+            height: "433",
+          },
+          {
+            src: "/images/valinor-3.jpg",
+            alt: "Valinor 3",
+            width: "900",
+            height: "810",
+          },
+          {
+            src: "/images/valinor-4.jpg",
+            alt: "Valinor 4",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-5.jpg",
+            alt: "Valinor 5",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-6.jpg",
+            alt: "Valinor 6",
+            width: "900",
+            height: "805",
+          },
+        ],
+      },
+      {
+        title: "Vale",
+        slug: "vale-featured",
+        category: "Branding",
+        description:
+          "Vale is a next-generation home security company redefining protection through intelligent AI cameras, professional monitoring, and rapid private patrol response: positioning security as active defense rather than passive alerting. I developed the brand identity for Vale, crafting a visual system that communicates intelligence, trust, and quiet confidence.",
+        images: [
+          {
+            src: "/images/vale-1.jpg",
+            alt: "Vale 1",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-2.jpg",
+            alt: "Vale 2",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-3.jpg",
+            alt: "Vale 3",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-4.jpg",
+            alt: "Vale 4",
+            width: "900",
+            height: "506",
           },
         ],
       },
@@ -405,6 +490,89 @@ const works: TWorks = [
   {
     category: "Branding",
     items: [
+      {
+        title: "Vale",
+        slug: "vale",
+        description:
+          "Vale is a next-generation home security company redefining protection through intelligent AI cameras, professional monitoring, and rapid private patrol response: positioning security as active defense rather than passive alerting. I developed the brand identity for Vale, crafting a visual system that communicates intelligence, trust, and quiet confidence.",
+        images: [
+          {
+            src: "/images/vale-1.jpg",
+            alt: "Vale 1",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-2.jpg",
+            alt: "Vale 2",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-3.jpg",
+            alt: "Vale 3",
+            width: "900",
+            height: "506",
+          },
+          {
+            src: "/images/vale-4.jpg",
+            alt: "Vale 4",
+            width: "900",
+            height: "506",
+          },
+        ],
+      },
+      {
+        title: "Valinor",
+        slug: "valinor",
+        description:
+          "Valinor is a defense technology company founded by veterans of Palantir, purpose-built to bring enterprise-grade intelligence hardware and software to national security challenges. I developed distinct brand identities for six of their subsidiary products — each with its own visual language, unified by a coherent overarching system — and designed and engineered their full web presence from the ground up.",
+        images: [
+          {
+            src: "/videos/valinor-flow.mp4",
+            alt: "Valinor product flow",
+            width: "1200",
+            height: "1200",
+            type: "video",
+          },
+          {
+            src: "/images/valinor-1.jpg",
+            alt: "Valinor 1",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-2.jpg",
+            alt: "Valinor 2",
+            width: "900",
+            height: "433",
+          },
+          {
+            src: "/images/valinor-3.jpg",
+            alt: "Valinor 3",
+            width: "900",
+            height: "810",
+          },
+          {
+            src: "/images/valinor-4.jpg",
+            alt: "Valinor 4",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-5.jpg",
+            alt: "Valinor 5",
+            width: "900",
+            height: "805",
+          },
+          {
+            src: "/images/valinor-6.jpg",
+            alt: "Valinor 6",
+            width: "900",
+            height: "805",
+          },
+        ],
+      },
       {
         title: "Figment.io",
         slug: "figment",

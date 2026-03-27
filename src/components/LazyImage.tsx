@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const LazyImage = ({ className, src, alt, width, height }: { className: string, src: string, alt: string, width: string, height: string}) => {
+const LazyImage = ({ className, src, alt, width, height, type }: { className: string, src: string, alt: string, width: string, height: string, type?: "video" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const imgRef = useRef(null);
 
@@ -34,11 +34,22 @@ const LazyImage = ({ className, src, alt, width, height }: { className: string, 
       }}
     >
       {isVisible && (
-        <img
-          src={src}
-          alt={alt}
-          style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
-        />
+        type === "video" ? (
+          <video
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        )
       )}
     </div>
   );
